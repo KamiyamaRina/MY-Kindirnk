@@ -2,7 +2,7 @@
 :root {
   /* variables for iOS components */
   --background-color: #efeff4;
-  --text-color: #1f1f21;
+  --text-color: #7B8D93;
   --sub-text-color: #999;
   --highlight-color: #0076ff;
   --second-highlight-color: #25a6d9;
@@ -11,7 +11,7 @@
   --button-cta-background-color: var(--second-highlight-color);
   --toolbar-background-color: #fafafa;
   --toolbar-button-color: var(--highlight-color);
-  --toolbar-text-color: #1f1f21;
+  --toolbar-text-color: #7B8D93;
   --toolbar-border-color: #b2b2b2;
   --button-bar-color: var(--highlight-color);
   --button-bar-active-text-color: #fff;
@@ -43,13 +43,13 @@
   --modal-background-color: rgba(0, 0, 0, 0.7);
   --modal-text-color: #fff;
   --alert-dialog-background-color: #f4f4f4;
-  --alert-dialog-text-color: #1f1f21;
+  --alert-dialog-text-color: #7B8D93;
   --alert-dialog-button-color: var(--highlight-color);
   --alert-dialog-separator-color: #ddd;
   --dialog-background-color: #f4f4f4;
   --dialog-text-color: var(--text-color);
   --popover-background-color: white;
-  --popover-text-color: #1f1f21;
+  --popover-text-color: #7B8D93;
   --action-sheet-title-color: #8f8e94;
   --action-sheet-button-separator-color: rgba(0, 0, 0, 0.1);
   --action-sheet-button-color: var(--highlight-color);
@@ -81,13 +81,13 @@
   --material-switch-inactive-thumb-color: #f1f1f1;
   --material-switch-inactive-background-color: #b0afaf;
   --material-range-track-color: #bdbdbd;
-  --material-range-thumb-color: #31313a;
+  --material-range-thumb-color: #fafafa;
   --material-range-disabled-thumb-color: #b0b0b0;
   --material-range-disabled-thumb-border-color: #eeeeee;
   --material-range-zero-thumb-color: #f2f2f2;
   --material-toolbar-background-color: #ffffff;
-  --material-toolbar-text-color: #31313a;
-  --material-toolbar-button-color: #1e88e5;
+  --material-toolbar-text-color: #fafafa;
+  --material-toolbar-button-color: #fafafa;
   --material-segment-background-color: #fafafa;
   --material-segment-active-background-color: #c8c8c8;
   --material-segment-text-color: color(black a(38%));
@@ -113,7 +113,7 @@
   --material-dialog-background-color: #ffffff;
   --material-dialog-text-color: var(--material-text-color);
   --material-alert-dialog-background-color: #ffffff;
-  --material-alert-dialog-title-color: #31313a;
+  --material-alert-dialog-title-color: #fafafa;
   --material-alert-dialog-content-color: rgba(49, 49, 58, 0.85);
   --material-alert-dialog-button-color: #37474f;
   --material-progress-bar-primary-color: #37474f;
@@ -123,10 +123,10 @@
   --material-progress-circle-secondary-color: var(--material-progress-bar-secondary-color);
   --material-progress-circle-background-color: transparent;
   --material-tabbar-background-color: #ffffff;
-  --material-tabbar-text-color: #31313a;
-  --material-tabbar-highlight-text-color: #31313a;
+  --material-tabbar-text-color: #fafafa;
+  --material-tabbar-highlight-text-color: #fafafa;
   --material-tabbar-highlight-color: rgba(49, 49, 58, 0.1);
-  --material-fab-text-color: #31313a;
+  --material-fab-text-color: #fafafa;
   --material-fab-background-color: #ffffff;
   --material-fab-active-background-color: rgba(255, 255, 255, 0.75);
   --material-card-background-color: white;

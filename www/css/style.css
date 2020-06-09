@@ -7,12 +7,122 @@
   display: flexbox;
 }
 
-.topImage {
-  margin: 150px 30px;
-  width: 80%;
+.hedder {
+  background: #00698C;
 }
 
-/* 星表示の方 */
+.hedder2 {
+  background: #FF9673;
+}
+
+/* トップページ */
+  #top-page > .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .topImage {
+    margin: 100px 30px;
+    width: 95%;
+  }
+
+  #registerbutton {
+    background: #00698C;
+    font-size: 18px;
+    padding: 15px 70px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;  
+  }
+
+  #kindbutton {
+    color: #fafafa;
+    background: #FF9673;
+    font-size: 18px;
+    padding: 15px 70px;    
+    margin-bottom: 20px;
+    letter-spacing: 2px;  
+  }
+
+  #listbutton {
+    color: #00698C;
+    background: #CFD8DC;
+    font-weight: 550;
+    padding: 5px 85px;    
+    margin-bottom: 20px;
+    letter-spacing: 2px;  
+  }
+  
+/* 登録ページ */
+  .genre, .class, .place, .rice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .genre > ons-select, .class > ons-select, .place > ons-select, .rice > ons-select {
+    margin-left: 20px;
+    text-align: center;
+    margin: 16px;
+  }
+
+  .name,.memo, .ster {
+    margin: 20px 0;
+  }
+
+  #memo {
+    border-color: #7B8D93;
+  }
+
+  /* 星入力 */
+    
+    .evaluation{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+    }
+    .evaluation input[type='radio']{
+      display: none;
+    }
+    .evaluation label{
+      position: relative;
+      padding: 10px 10px 0;
+      color: #ddd;
+      cursor: pointer;
+      font-size: 50px;
+    }
+    .evaluation label .text{
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      text-align: center;
+      font-size: 12px;
+      color: gray;
+    }
+    .evaluation label:hover,
+    .evaluation label:hover ~ label,
+    .evaluation input[type='radio']:checked ~ label{
+      color: #ffe373;
+    }
+  
+  #sendbutton {
+    background: #73DCFF;
+    font-size: 18px;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+    letter-spacing: 2px; 
+  }
+
+
+/* 一覧ページ */
+
+.lists {
+  margin-top: 10px;
+}
+/* 星表示 */
   .rate {
     position: relative;
     display: inline-block;
@@ -33,7 +143,7 @@
     color: #ddd;
   }
   .rate:after {
-    color: #ffa500;
+    color: #ffe373;
     overflow: hidden;
     white-space: nowrap;
   }

@@ -32,11 +32,240 @@
 
   <!-- 登録ページ -->
   <ons-template id="page2.html">
-    <ons-page id="Register-page">
+    <ons-page id="register-page">
       <!-- ヘッダー -->
-      <ons-toolbar>
-        <div class="left"><ons-back-button>TOPへ</ons-back-button></div>
+      <ons-toolbar class="hedder">
+        <div class="left">
+          <ons-toolbar-button icon="fa-home" id="topbutton"></ons-toolbar-button>
+        </div>
         <div class="center">お酒の登録</div>
+      </ons-toolbar>
+
+      <div class="content">
+        <!-- ジャンル選択 -->
+        <div class="genre">
+          <p>ジャンル: </p>
+          <ons-select>
+            <option >選択してください</option>
+            <option value="sake">日本酒</option>
+            <option value="redWine">赤ワイン</option>
+            <option value="whiteWine">白ワイン</option>
+            <option value="shochu">焼酎</option>
+            <option value="fruitWine">果実酒</option>
+            <option value="cocktail">カクテル</option>
+          </ons-select>
+        </div>
+        
+        <!-- 名前入力 -->
+        <div class="name">
+          <ons-input type="text" placeholder="お酒の名前" modifier="underbar"></ons-input>
+        </div>
+        
+        <!-- 分類選択 -->
+        <div class="class">
+          <p>分類: </p>
+          <ons-select>
+            <option value="
+            daiginjo">大吟醸</option>
+            <option value="ginjo">吟醸</option>
+            <option value="junmai">純米</option>
+            <option value="junmaidaiginjo">純米大吟醸</option>
+            <option value="
+            brewed">醸造酒</option>
+          </ons-select>
+        </div>
+
+        <!-- 産地選択 -->
+        <div class="place">
+          <p>産地: </p>
+          <ons-select>
+            <option value="hokkaidou">北海道</option>
+            <option value="niigata">新潟</option>
+            <option value="nagano">長野</option>
+            <option value="kyoto">京都</option>
+            <option value="hirosima">広島</option>
+          </ons-select>
+        </div>
+
+        <!-- 酒米選択 -->
+        <div class="rice">
+          <p>酒米: </p>
+          <ons-select>
+            <option value="yamadanisiki">山田錦</option>
+            <option value="gohyakumanngoku">五百万石</option>
+            <option value="miyamanisiki">美山錦</option>
+            <option value="omati">雄町</option>
+          </ons-select>
+        </div>
+
+        <!-- メモ欄 -->
+        <div class="memo">
+          <textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ"></textarea>
+        </div>
+
+        <!-- 星入力 -->
+        <div class="ster">
+          <form type="get" action="#">
+            <div class="evaluation">
+              <input id="star1" type="radio" name="star" value="5" />
+              <label for="star1"><span class="text">最高</span>★</label>
+              <input id="star2" type="radio" name="star" value="4" />
+              <label for="star2"><span class="text">良い</span>★</label>
+              <input id="star3" type="radio" name="star" value="3" />
+              <label for="star3"><span class="text">普通</span>★</label>
+              <input id="star4" type="radio" name="star" value="2" />
+              <label for="star4"><span class="text">悪い</span>★</label>
+              <input id="star5" type="radio" name="star" value="1" />
+              <label for="star5"><span class="text">最悪</span>★</label>
+            </div>
+          </form>
+        </div>
+
+        <ons-button id="sendbutton">登録</ons-button>
+        
+      </div>
+      
+    </ons-page>
+  </ons-template>
+
+  <!-- 一覧ページ -->
+  <ons-template id="page3.html">
+    <ons-page id="list-page">
+      <!-- ヘッダー -->
+      <ons-toolbar class="hedder">
+        <div class="left">
+          <ons-toolbar-button icon="fa-home" id="topbutton"></ons-toolbar-button>
+        </div>
+        <div class="center">一覧</div>
+      </ons-toolbar>
+      
+      <!-- リスト -->
+      <ons-list modifier="inset" class="lists">
+        <ons-list-item id="sake1" odifier="longdivider" tappable>
+          <div class="center">
+            <span class="list-item__title">おいしいお酒</span>
+            <span class="list-item__subtitle">日本酒</span>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item id="sake2" odifier="longdivider" tappable>
+          <div class="center">
+            <span class="list-item__title">デリシャスワイン</span>
+            <span class="list-item__subtitle">ワイン(赤)</span>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item id="sake3" odifier="longdivider" tappable>
+          <div class="center">
+            <span class="list-item__title">うまい焼酎</span>
+            <span class="list-item__subtitle">焼酎</span>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item id="sake4" odifier="longdivider" tappable>
+          <div class="center">
+            <span class="list-item__title">飲みやすい梅酒</span>
+            <span class="list-item__subtitle">果実酒</span>
+          </div>
+        </ons-list-item>
+
+        <ons-list-item id="sake5" odifier="longdivider" tappable>
+          <div class="center">
+            <span class="list-item__title">美味なカクテル</span>
+            <span class="list-item__subtitle">カクテル</span>
+          </div>
+        </ons-list-item>
+
+      </ons-list>
+
+    </ons-page>
+  </ons-template>
+  
+  <!-- 結果ページ -->
+  <ons-template id="page4.html">
+    <ons-page id="kind-page">
+      <div class="background" style="background: linear-gradient( hsla(15, 100%, 73%, 0.5), #fafafa 73%);"></div>
+      <!-- ヘッダー -->
+      <ons-toolbar class="hedder2">
+        <div class="left">
+          <ons-toolbar-button icon="fa-home" id="topbutton"></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      
+      <div class="content">
+        <div class="select">
+          <h1>私の好みの</h1>
+  
+          <ons-select>
+            <option value="sake">日本酒</option>
+            <option value="redWine">赤ワイン</option>
+            <option value="whiteWine">白ワイン</option>
+            <option value="shochu">焼酎</option>
+            <option value="fruitWine">果実酒</option>
+            <option value="cocktail">カクテル</option>
+          </ons-select>
+  
+          <h1>は...</h1>
+        </div>
+
+        <div class="sake"></div>
+        <p>分類:大吟醸</p>
+        <p>産地:新潟</p>
+        <p>酒米:山田錦</p>
+        <p>味:辛口</p>
+      </div>
+
+    </ons-page>
+  </ons-template>
+
+  <!-- 詳細ページ -->
+  <ons-template id="page5.html">
+    <ons-page id="detail-page">
+      <!-- ヘッダー -->
+      <ons-toolbar class="hedder">
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">おいしい日本酒</div>
+        <div class="right">
+          <ons-toolbar-button icon="fa-edit" id="editbutton"></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      <div class="content">
+        <p>ジャンル:日本酒</p>
+        <p>分類:大吟醸</p>
+        <p>産地:新潟</p>
+        <p>酒米:山田錦</p>
+        <p>味:辛口</p>
+        <p>メモ</p>
+        <p>おいしい日本酒でした。</p>
+        
+        <!-- 星の表示 -->
+        <div class="wrap">
+          <!-- <span class="rate rate0"></span>
+          <span class="rate rate1"></span>
+          <span class="rate rate1-5"></span>
+          <span class="rate rate2"></span>
+          <span class="rate rate2-5"></span>
+          <span class="rate rate3"></span>
+          <span class="rate rate3-5"></span>
+          <span class="rate rate4"></span>
+          <span class="rate rate4-5"></span> -->
+          <span class="rate rate5"></span>
+        </div>
+
+      </div>
+
+    </ons-page>
+  </ons-template>
+
+  <!-- 編集ページ -->
+  <ons-template id="page6.html">
+    <ons-page id="edit-page">
+      <!-- ヘッダー -->
+      <ons-toolbar class="hedder">
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">お酒の編集</div>
       </ons-toolbar>
 
       <div class="content">
@@ -54,7 +283,7 @@
         </div>
         
         <div class="name">
-          <ons-input type="text" placeholder="名前"></ons-input>
+          <ons-input type="text" placeholder="名前" modifier="underbar"></ons-input>
         </div>
         
         <div class="class">
@@ -113,100 +342,5 @@
     </ons-page>
   </ons-template>
 
-  <!-- 一覧ページ -->
-  <ons-template id="page3.html">
-    <ons-page id="list-page">
-      <!-- ヘッダー -->
-      <ons-toolbar>
-        <div class="left"><ons-back-button>TOPへ</ons-back-button></div>
-        <div class="center">一覧</div>
-      </ons-toolbar>
-      
-      <ons-list modifier="inset">
-        <ons-list-item id="sake1" odifier="longdivider" tappable>          
-          <h1>おいしいお酒</h1>
-          <p>日本酒</p>
-        </ons-list-item>
-
-        <ons-list-item odifier="longdivider" tappable>          
-          <h1>デリシャスワイン</h1>
-          <p>ワイン(赤)</p>
-        </ons-list-item>
-
-        <ons-list-item odifier="longdivider" tappable>          
-          <h1>うまい焼酎</h1>
-          <p>焼酎</p>
-        </ons-list-item>
-
-        <ons-list-item odifier="longdivider" tappable>          
-          <h1>飲みやすい梅酒</h1>
-          <p>果実酒</p>
-        </ons-list-item>
-
-        <ons-list-item odifier="longdivider" tappable>          
-          <h1>美味なカクテル</h1>
-          <p>カクテル</p>
-        </ons-list-item>
-
-      </ons-list>
-
-    </ons-page>
-  </ons-template>
-  
-  <!-- 結果ページ -->
-  <ons-template id="page4.html">
-    <ons-page id="kind-page">
-      <!-- ヘッダー -->
-      <ons-toolbar>
-        <div class="left">
-          <ons-back-button>TOPへ</ons-back-button>
-        </div>
-      </ons-toolbar>
-
-      <div class="content">
-      </div>
-
-    </ons-page>
-  </ons-template>
-
-  <!-- 詳細ページ -->
-  <ons-template id="page5.html">
-    <ons-page id="detail-page">
-      <!-- ヘッダー -->
-      <ons-toolbar>
-        <div class="left"><ons-back-button>TOPへ</ons-back-button></div>
-        <div class="center">おいしい日本酒</div>
-        <div class="right">
-          <ons-toolbar-button icon="fa-edit" id="editbutton"></ons-toolbar-button>
-        </div>
-      </ons-toolbar>
-
-      <div class="content">
-        <p>ジャンル:日本酒</p>
-        <p>分類:大吟醸</p>
-        <p>産地:新潟</p>
-        <p>酒米:山田錦</p>
-        <p>味:辛口</p>
-        <p>メモ</p>
-        <p>おいしい日本酒でした。</p>
-        
-        <!-- 星の表示 -->
-        <div class="wrap">
-          <!-- <span class="rate rate0"></span>
-          <span class="rate rate1"></span>
-          <span class="rate rate1-5"></span>
-          <span class="rate rate2"></span>
-          <span class="rate rate2-5"></span>
-          <span class="rate rate3"></span>
-          <span class="rate rate3-5"></span>
-          <span class="rate rate4"></span>
-          <span class="rate rate4-5"></span> -->
-          <span class="rate rate5"></span>
-        </div>
-
-      </div>
-
-    </ons-page>
-  </ons-template>
 </body>
 </html>

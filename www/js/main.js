@@ -13,7 +13,7 @@
           document.querySelector('#navigator').pushPage('page2.html');
         };
       } 
-    // topから判定
+    // topから結果
       if (page.matches('#top-page')) {
         page.querySelector('#kindbutton').onclick = function() {
           document.querySelector('#navigator').pushPage('page4.html');
@@ -28,7 +28,7 @@
       } 
 
     // 登録から一覧
-      if (page.matches('#Register-page')) {
+      if (page.matches('#register-page')) {
         page.querySelector('#sendbutton').onclick = function() {
           document.querySelector('#navigator').replacePage('page3.html');
         };
@@ -37,23 +37,42 @@
     // // 一覧から詳細
       if (page.matches('#list-page')) {
         page.querySelector('#sake1').onclick = function() {
-          document.querySelector('#navigator').replacePage('page5.html');
+          document.querySelector('#navigator').pushPage('page5.html');
         };
       } 
   
     // 詳細から編集
       if (page.matches('#detail-page')) {
         page.querySelector('#editbutton').onclick = function() {
-          document.querySelector('#navigator').pushPage('page2.html');
+          document.querySelector('#navigator').pushPage('page6.html');
         };
       } 
 
-    // 一覧でバックボタン押すときはtopへ      
+    // 編集から一覧
+      if (page.matches('#edit-page')) {
+        page.querySelector('#sendbutton').onclick = function() {
+          document.querySelector('#navigator').replacePage('page3.html');
+        };
+      } 
+
+    // 一覧からtop
       if (page.matches('#list-page')) {
-        page.querySelector('ons-back-button').onclick = function() {
+        page.querySelector('#topbutton').onclick = function() {
           document.querySelector('#navigator').resetToPage('top.html');
         };
-      }
+      } 
+    // 登録からtop
+      if (page.matches('#register-page')) {
+        page.querySelector('#topbutton').onclick = function() {
+          document.querySelector('#navigator').resetToPage('top.html');
+        };
+      } 
+    // 結果からtop
+      if (page.matches('#kind-page')) {
+        page.querySelector('#topbutton').onclick = function() {
+          document.querySelector('#navigator').resetToPage('top.html');
+        };
+      } 
      
 
   });

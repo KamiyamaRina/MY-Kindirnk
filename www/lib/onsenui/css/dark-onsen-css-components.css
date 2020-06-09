@@ -4974,7 +4974,7 @@ h4, h5, h6 {
   border-radius: 4px;
   background-color: #0d0d0d;
   -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC');
-  color: #1f1f21;
+  color: #7B8D93;
 }
 .dialog-mask {
   padding: 0;
@@ -5076,7 +5076,7 @@ h4, h5, h6 {
   border-radius: 8px;
   overflow: visible;
   max-width: 95%;
-  color: #1f1f21;
+  color: #7B8D93;
 }
 .alert-dialog-container {
   height: inherit;
@@ -5092,7 +5092,7 @@ h4, h5, h6 {
   font-weight: 500;
   padding: 0 8px;
   text-align: center;
-  color: #1f1f21;
+  color: #7B8D93;
 }
 .alert-dialog-content {
   box-sizing: border-box;
@@ -5101,7 +5101,7 @@ h4, h5, h6 {
   font-size: 14px;
   min-height: 36px;
   text-align: center;
-  color: #1f1f21;
+  color: #7B8D93;
 }
 .alert-dialog-footer {
   width: 100%;
@@ -6032,7 +6032,7 @@ ons-fab.fab--material, ons-speed-dial-item.fab--material, button.fab--material {
   text-decoration: none;
   font-size: 25px;
   line-height: 56px;
-  color: #31313a;
+  color: #fafafa;
   background-color: #ffffff;
   box-shadow:
       0 4px 5px 0 rgba(0, 0, 0, .14),
