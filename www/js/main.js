@@ -83,8 +83,8 @@ if (ons.platform.isIPhoneX()) {
 };
 
 
-
 $.get("json/data.json", function(data){ 
-  var hoge = $.parseJSON(data); 
-  console.log(data.genre.sake.name);  
+  var json = $.parseJSON(data); 
+  console.log(json.genre.sake.name);
+  
 }); 
