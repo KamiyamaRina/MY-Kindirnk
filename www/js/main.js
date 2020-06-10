@@ -82,7 +82,10 @@ if (ons.platform.isIPhoneX()) {
   document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
 };
 
+
+
 $.get("json/data.json", function(data){ 
   var hoge = $.parseJSON(data); 
-  return hoge;
+  console.log(hoge.genre.sake.name);
+  
 }); 
