@@ -86,6 +86,5 @@ if (ons.platform.isIPhoneX()) {
 
 $.get("json/data.json", function(data){ 
   var hoge = $.parseJSON(data); 
-  console.log(hoge.genre.sake.name);
-  
+  console.log(data.genre.sake.name);  
 }); 
