@@ -494,7 +494,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -511,7 +511,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -523,7 +523,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -1047,7 +1047,7 @@ h4, h5, h6 {
   border-bottom: 0;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
   padding: 0;
-  background-color: #ffffff;
+  background-color: #fafafa;
   background-size: 0;
 }
 /*~
@@ -1646,7 +1646,7 @@ h4, h5, h6 {
           transform: translate3d(0, 0, 0);
   text-transform: uppercase;
   background-color: #2979ff;
-  color: #ffffff;
+  color: #fafafa;
   font-weight: 500;
   transition: background-color 0.25s linear;
   opacity: 1;
@@ -1735,7 +1735,7 @@ h4, h5, h6 {
           transform: translate3d(0, 0, 0);
   text-transform: uppercase;
   background-color: #2979ff;
-  color: #ffffff;
+  color: #fafafa;
   font-weight: 500;
   transition: background-color 0.25s linear;
   box-shadow: none;
@@ -1853,7 +1853,7 @@ h4, h5, h6 {
 }
 :checked + .button-bar__button {
   background-color: #0076ff;
-  color: #fff;
+  color: #fafafa;
   transition: none;
 }
 .button-bar__button:active,
@@ -1994,7 +1994,7 @@ h4, h5, h6 {
 }
 :checked + .segment__button {
   background-color: #0076ff;
-  color: #fff;
+  color: #fafafa;
   transition: none;
 }
 .segment__item:first-child > .segment__button {
@@ -2463,7 +2463,7 @@ h4, h5, h6 {
 }
 .tabbar--material {
   background: none;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border-bottom-width: 0;
   box-shadow:
     0 4px 2px -2px rgba(0, 0, 0, .14),
@@ -2841,7 +2841,7 @@ h4, h5, h6 {
   width: 11px;
   height: 5px;
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid #fafafa;
   border-width: 1px;
   border-top: none;
   border-right: none;
@@ -3036,7 +3036,7 @@ h4, h5, h6 {
   transition: background-color 0.1s linear, border-color 0.1s linear;
 }
 .checkbox--material__checkmark:after {
-  border-color: #ffffff;
+  border-color: #fafafa;
   transition: -webkit-transform 0.2s ease 0;
   transition: transform 0.2s ease 0;
   transition: transform 0.2s ease 0, -webkit-transform 0.2s ease 0;
@@ -3100,7 +3100,7 @@ h4, h5, h6 {
   background-color: #afafaf;
 }
 :disabled:checked + .checkbox--material__checkmark:after {
-  border-color: #ffffff;
+  border-color: #fafafa;
 }
 /*~
   name: Radio Button
@@ -3389,7 +3389,7 @@ h4, h5, h6 {
   background-repeat: no-repeat;
   background-position: bottom, top;
   border: none;
-  background-color: #fff;
+  background-color: #fafafa;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
   .list {
@@ -3416,7 +3416,7 @@ h4, h5, h6 {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
-  padding: 0 0 0 14px;
+  padding: 0;
   margin: 0;
   color: #7B8D93;
   transition: background-color 0.2s linear;
@@ -4007,7 +4007,7 @@ h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   background-image: none;
-  background-color: #fff;
+  background-color: #fafafa;
 }
 .list-item--material {
   border: 0;
@@ -4115,7 +4115,7 @@ h4, h5, h6 {
     </ul>
 */
 .list-header--material {
-  background: #fff;
+  background: #fafafa;
   border: none;
   font-size: 14px;
   text-transform: none;
@@ -5020,7 +5020,7 @@ h4, h5, h6 {
 }
 .dialog-container--material {
   border-radius: 2px;
-  background-color: #ffffff;
+  background-color: #fafafa;
   color: #7B8D93;
 }
 .dialog-mask--material {
@@ -5302,7 +5302,7 @@ h4, h5, h6 {
 */
 .alert-dialog--material {
   border-radius: 2px;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 .alert-dialog-container--material {
   padding: 22px 0 0 0;
@@ -5936,7 +5936,7 @@ ons-fab.fab, ons-speed-dial-item.fab, button.fab {
   font-size: 25px;
   line-height: 56px;
   letter-spacing: 0;
-  color: #ffffff;
+  color: #fafafa;
   vertical-align: middle;
   text-align: center;
   background-color: #0076ff;
@@ -6015,7 +6015,7 @@ ons-fab.fab--material, ons-speed-dial-item.fab--material, button.fab--material {
   font-size: 25px;
   line-height: 56px;
   letter-spacing: 0;
-  color: #ffffff;
+  color: #fafafa;
   vertical-align: middle;
   text-align: center;
   background-color: #0076ff;
@@ -6033,7 +6033,7 @@ ons-fab.fab--material, ons-speed-dial-item.fab--material, button.fab--material {
   font-size: 25px;
   line-height: 56px;
   color: #fafafa;
-  background-color: #ffffff;
+  background-color: #fafafa;
   box-shadow:
       0 4px 5px 0 rgba(0, 0, 0, .14),
       0 1px 10px 0 rgba(0, 0, 0, .12),
@@ -6216,7 +6216,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  color: #fff;
+  color: #fafafa;
   white-space: normal;
 }
 /*~
@@ -6561,7 +6561,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
 .action-sheet-button:last-of-type {
   border-radius: 12px;
   margin: 8px 0 0 0; /* iOS 9, 10, 11 */
-  background-color: #fff;
+  background-color: #fafafa;
   background-image: none;
   font-weight: 600;
 }

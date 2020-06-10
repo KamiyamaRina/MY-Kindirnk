@@ -1,0 +1,79 @@
+{
+  "genre": {
+    "sake": {
+      "name": "日本酒",
+      "Class": {
+        "name": "分類",
+        "item": {
+          "daiginjou": "大吟醸",
+          "ginjou": "吟醸",
+          "junmai": "純米",
+          "junnmaidaiginjo": "純米大吟醸"
+        }        
+      },
+      "place": {
+        "name": "産地",
+        "item": {
+          "hokkaidou": "北海道", 
+          "niigata": "新潟", 
+          "nagano": "長野", 
+          "kyoto": "京都", 
+          "hirosima": "広島"
+        }
+      },
+      "rice": {
+        "name": "酒米",
+        "item": {          
+          "yamadanisiki": "山田錦", 
+          "gohyakumanngoku": "五百万石", 
+          "miyamanisiki": "美山錦", 
+          "omati": "雄町"
+        }
+      },
+      "taste": {
+        "name": "味",
+        "item": {          
+          "tanreikarakuti": "淡麗辛口",
+          "houjunkarakuti": "芳醇辛口",
+          "tanreiamakuti": "淡麗甘口",
+          "houjunamakuti": "芳醇甘口"
+        }
+      }
+    },
+    "redWine":{
+      "name": "赤ワイン",
+      "place": {
+        "name": "産地",
+        "item": {          
+          "hokkaidou": "北海道", 
+          "niigata": "新潟", 
+          "nagano": "長野", 
+          "kyouto": "京都", 
+          "hirosima": "広島"
+        }
+      }
+    }
+  },
+
+  "data": {
+    "1": {
+      "name": "おいしい日本酒",
+      "genre": "日本酒",
+      "Class": "大吟醸",
+      "place": "新潟",
+      "rice": "山田錦",
+      "taste": "端麗辛口",
+      "memo": "おいしい日本酒でした。<br>めちゃデリシャス。",
+      "ster": 5
+    },
+    "2": {
+      "name": "おいしいワイン",
+      "genre": "赤ワイン",
+      "place": "海外",
+      "memo": "おいしいワインでした。<br>めちゃデリシャス。",
+      "ster": 5
+    }
+  }
+
+
+}

@@ -55,14 +55,14 @@
         };
       } 
 
-    // 一覧からtop
+    // 一覧から登録
       if (page.matches('#list-page')) {
-        page.querySelector('#topbutton').onclick = function() {
-          document.querySelector('#navigator').resetToPage('top.html');
+        page.querySelector('#registerbutton2').onclick = function() {
+          document.querySelector('#navigator').pushPage('page2.html');
         };
       } 
-    // 登録からtop
-      if (page.matches('#register-page')) {
+    // 一覧からtop
+      if (page.matches('#list-page')) {
         page.querySelector('#topbutton').onclick = function() {
           document.querySelector('#navigator').resetToPage('top.html');
         };
@@ -77,10 +77,12 @@
 
   });
 
+if (ons.platform.isIPhoneX()) {
+  document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+  document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+};
 
-  if (ons.platform.isIPhoneX()) {
-    document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
-    document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-  };
-
- 
+$.get("json/data.json", function(data){ 
+  var hoge = $.parseJSON(data); 
+  return hoge;
+}); 

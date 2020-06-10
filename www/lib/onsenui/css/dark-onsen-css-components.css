@@ -112,7 +112,7 @@ h4, h5, h6 {
   bottom: 0;
   overflow-x: visible;
   overflow-y: hidden;
-  color: #fff;
+  color: #fafafa;
   -ms-overflow-style: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -494,7 +494,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -511,7 +511,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -523,7 +523,7 @@ h4, h5, h6 {
   position: relative;
   height: 28px;
   width: 28px;
-  background-color: #fff;
+  background-color: #fafafa;
   border: none;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .25), 0 3px 2px rgba(0, 0, 0, .25);
   border-radius: 50%;
@@ -791,7 +791,7 @@ h4, h5, h6 {
   padding-left: 0;
   padding-right: 0;
   background: #181818;
-  color: #fff;
+  color: #fafafa;
   box-shadow: none;
   font-weight: 400;
   width: 100%;
@@ -870,13 +870,13 @@ h4, h5, h6 {
   line-height: 44px;
   font-size: 17px;
   font-weight: 500;
-  color: #fff;
+  color: #fafafa;
 }
 .toolbar__title {
   line-height: 44px;
   font-size: 17px;
   font-weight: 500;
-  color: #fff;
+  color: #fafafa;
   margin: 0;
   padding: 0;
   overflow: visible;
@@ -964,7 +964,7 @@ h4, h5, h6 {
   padding-left: 0;
   padding-right: 0;
   background: #181818;
-  color: #fff;
+  color: #fafafa;
   box-shadow: none;
   font-weight: 400;
   border-bottom: none;
@@ -1080,7 +1080,7 @@ h4, h5, h6 {
   font-weight: 400;
   font-size: 20px;
   font-weight: 500;
-  color: #ffffff;
+  color: #fafafa;
   height: 56px;
   min-width: 72px;
   width: auto;
@@ -1092,7 +1092,7 @@ h4, h5, h6 {
   font-weight: 400;
   font-size: 20px;
   font-weight: 500;
-  color: #ffffff;
+  color: #fafafa;
   height: 56px;
   width: auto;
   -webkit-box-flex: 1;
@@ -1646,7 +1646,7 @@ h4, h5, h6 {
           transform: translate3d(0, 0, 0);
   text-transform: uppercase;
   background-color: #d68600;
-  color: #ffffff;
+  color: #fafafa;
   font-weight: 500;
   transition: background-color 0.25s linear;
   opacity: 1;
@@ -1735,7 +1735,7 @@ h4, h5, h6 {
           transform: translate3d(0, 0, 0);
   text-transform: uppercase;
   background-color: #d68600;
-  color: #ffffff;
+  color: #fafafa;
   font-weight: 500;
   transition: background-color 0.25s linear;
   box-shadow: none;
@@ -1853,7 +1853,7 @@ h4, h5, h6 {
 }
 :checked + .button-bar__button {
   background-color: #ffa101;
-  color: #fff;
+  color: #fafafa;
   transition: none;
 }
 .button-bar__button:active,
@@ -1994,7 +1994,7 @@ h4, h5, h6 {
 }
 :checked + .segment__button {
   background-color: #ffa101;
-  color: #fff;
+  color: #fafafa;
   transition: none;
 }
 .segment__item:first-child > .segment__button {
@@ -2488,7 +2488,7 @@ h4, h5, h6 {
   bottom: 0;
   position: absolute;
   margin-top: -2px;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 :checked + .tabbar--material__button:after {
   width: 100%;
@@ -2496,14 +2496,14 @@ h4, h5, h6 {
 }
 :checked + .tabbar--material__button {
   background-color: transparent;
-  color: #ffffff;
+  color: #fafafa;
 }
 .tabbar--material__item:not([ripple]):active {
   background-color: rgb(41, 41, 41);
 }
 .tabbar--material__border {
   height: 2px;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 /*~
   name: Material Tabbar (Icon only)
@@ -2841,7 +2841,7 @@ h4, h5, h6 {
   width: 11px;
   height: 5px;
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid #fafafa;
   border-width: 1px;
   border-top: none;
   border-right: none;
@@ -3031,8 +3031,8 @@ h4, h5, h6 {
   background-color: transparent;
 }
 :checked + .checkbox--material__checkmark:before {
-  border: 2px solid #fff;
-  background-color: #fff;
+  border: 2px solid #fafafa;
+  background-color: #fafafa;
   transition: background-color 0.1s linear, border-color 0.1s linear;
 }
 .checkbox--material__checkmark:after {
@@ -3082,8 +3082,8 @@ h4, h5, h6 {
   transition: opacity 0.25s ease-out, transform 0.1s ease-out, -webkit-transform 0.1s ease-out;
 }
 .checkbox--material__input:checked:before {
-  box-shadow: 0 0 0 11px #fff;
-  background-color: #fff;
+  box-shadow: 0 0 0 11px #fafafa;
+  background-color: #fafafa;
 }
 .checkbox--material__input:active:before {
   opacity: .15;
@@ -3100,7 +3100,7 @@ h4, h5, h6 {
   background-color: #afafaf;
 }
 :disabled:checked + .checkbox--material__checkmark:after {
-  border-color: #ffffff;
+  border-color: #fafafa;
 }
 /*~
   name: Radio Button
@@ -3418,7 +3418,7 @@ h4, h5, h6 {
           align-items: center;
   padding: 0 0 0 14px;
   margin: 0 0 -1px 0;
-  color: #fff;
+  color: #fafafa;
   transition: background-color 0.2s linear;
 }
 /*~
@@ -3595,7 +3595,7 @@ h4, h5, h6 {
   padding: 0 0 0 15px;
   font-size: 12px;
   font-weight: 500;
-  color: #fff;
+  color: #fafafa;
   min-height: 24px;
   line-height: 25px;
   text-transform: uppercase;
@@ -4469,7 +4469,7 @@ h4, h5, h6 {
   font-size: 14px;
   background-color: rgba(255, 255, 255, 0.09);
   box-shadow: none;
-  color: #fff;
+  color: #fafafa;
   line-height: 1.3;
   padding: 0 8px 0 28px;
   margin: 0;
@@ -4568,7 +4568,7 @@ h4, h5, h6 {
   background-color: transparent;
   letter-spacing: 0;
   box-shadow: none;
-  color: #fff;
+  color: #fafafa;
   padding: 0;
   margin: 0;
   width: auto;
@@ -4620,7 +4620,7 @@ h4, h5, h6 {
 .text-input:invalid {
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fafafa;
 }
 /*~
   name: Underbar Text Input
@@ -4650,7 +4650,7 @@ h4, h5, h6 {
   background-color: transparent;
   letter-spacing: 0;
   box-shadow: none;
-  color: #fff;
+  color: #fafafa;
   padding: 0;
   margin: 0;
   width: auto;
@@ -4702,7 +4702,7 @@ h4, h5, h6 {
 .text-input--underbar:invalid {
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fafafa;
   border: none;
   background-color: transparent;
   border-bottom: 1px solid #242424;
@@ -4844,7 +4844,7 @@ h4, h5, h6 {
   border-radius: 4px;
   border: 1px solid #242424;
   background-color: #0d0d0d;
-  color: #fff;
+  color: #fafafa;
   letter-spacing: 0;
   box-shadow: none;
   -webkit-appearance: none;
@@ -4900,7 +4900,7 @@ h4, h5, h6 {
   border-radius: 4px;
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fafafa;
   letter-spacing: 0;
   box-shadow: none;
   -webkit-appearance: none;
@@ -5021,7 +5021,7 @@ h4, h5, h6 {
 .dialog-container--material {
   border-radius: 2px;
   background-color: #424242;
-  color: #ffffff;
+  color: #fafafa;
 }
 .dialog-mask--material {
   background-color: rgba(0, 0, 0, .3);
@@ -5499,7 +5499,7 @@ h4, h5, h6 {
   max-height: 100%;
   background-color: #242424;
   border-radius: 8px;
-  color: #fff;
+  color: #fafafa;
   pointer-events: auto;
 }
 .popover--top__content {
@@ -5572,7 +5572,7 @@ h4, h5, h6 {
 .popover--material__content {
   background-color: #424242;
   border-radius: 2px;
-  color: #ffffff;
+  color: #fafafa;
   box-shadow:
       0 2px 2px 0 rgba(0, 0, 0, .14),
       0 1px 5px 0 rgba(0, 0, 0, .12),
@@ -5936,7 +5936,7 @@ ons-fab.fab, ons-speed-dial-item.fab, button.fab {
   font-size: 25px;
   line-height: 56px;
   letter-spacing: 0;
-  color: #ffffff;
+  color: #fafafa;
   vertical-align: middle;
   text-align: center;
   background-color: #ffa101;
@@ -6015,7 +6015,7 @@ ons-fab.fab--material, ons-speed-dial-item.fab--material, button.fab--material {
   font-size: 25px;
   line-height: 56px;
   letter-spacing: 0;
-  color: #ffffff;
+  color: #fafafa;
   vertical-align: middle;
   text-align: center;
   background-color: #ffa101;
@@ -6033,7 +6033,7 @@ ons-fab.fab--material, ons-speed-dial-item.fab--material, button.fab--material {
   font-size: 25px;
   line-height: 56px;
   color: #fafafa;
-  background-color: #ffffff;
+  background-color: #fafafa;
   box-shadow:
       0 4px 5px 0 rgba(0, 0, 0, .14),
       0 1px 10px 0 rgba(0, 0, 0, .12),
@@ -6216,7 +6216,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  color: #fff;
+  color: #fafafa;
   white-space: normal;
 }
 /*~
@@ -6260,7 +6260,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
   height: 32px;
   line-height: 32px;
   border-color: #242424;
-  color: #fff;
+  color: #fafafa;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -6319,7 +6319,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
 .select-input:invalid {
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fafafa;
 }
 .select-input[multiple] {
   height: 64px;
@@ -6346,7 +6346,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
   font-family: 'Roboto', 'Noto', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-  color: #ffffff;
+  color: #fafafa;
   font-size: 15px;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTBweCIgaGVpZ2h0PSI1cHgiIHZpZXdCb3g9IjAgMCAxMCA1IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0My4yICgzOTA2OSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+c2VsZWN0LWFsbG93PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9InNlbGVjdCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Imlvcy1zZWxlY3QiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xOTguMDAwMDAwLCAtMTE0LjAwMDAwMCkiIGZpbGw9IiM3NTc1NzUiPgogICAgICAgICAgICA8ZyBpZD0ibWVudS1iYXItKy1vcGVuLW1lbnUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMy4wMDAwMDAsIDEwMC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJtZW51LWJhciI+CiAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9InNlbGVjdC1hbGxvdyIgcG9pbnRzPSI3NSAxNCA4MCAxOSA4NSAxNCI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4='), linear-gradient(to top, rgba(255, 255, 255, 0.88) 50%, rgba(255, 255, 255, 0.88) 50%);
   background-size: auto, 100% 1px;
@@ -6475,7 +6475,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
 .select-input--underbar:invalid {
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #fafafa;
   border: none;
   background-color: transparent;
   border-bottom: 1px solid #242424;
@@ -6561,7 +6561,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
 .action-sheet-button:last-of-type {
   border-radius: 12px;
   margin: 8px 0 0 0; /* iOS 9, 10, 11 */
-  background-color: #fff;
+  background-color: #fafafa;
   background-image: none;
   font-weight: 600;
 }
@@ -6726,7 +6726,7 @@ ons-fab.fab--bottom__center, button.fab--bottom__center, .speed-dial.fab--bottom
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
-  color: #fff;
+  color: #fafafa;
 }
 /*~
   name: Card with Title

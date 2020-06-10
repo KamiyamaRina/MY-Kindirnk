@@ -3,7 +3,7 @@
   --checkbox-border: 1px solid #c7c7cd;
   --checkbox-checked-background-color: var(--highlight-color); /* background color active */
   --background-color--before--checkbox: var(--checkbox-checked-background-color);
-  --checkmark-border: 2px solid #fff;
+  --checkmark-border: 2px solid #fafafa;
   --material-checkbox-size: 18px;
   --material-checkbox-focus-ring-size: 40px;
   --material-checkbox-focus-ring-shadow-size: calc((var(--material-checkbox-focus-ring-size) - var(--material-checkbox-size)) / 2);
@@ -326,6 +326,6 @@
 }
 
 :disabled:checked + .checkbox--material__checkmark:after {
-  border-color: #ffffff;
+  border-color: #fafafa;
 }
 
