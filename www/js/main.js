@@ -83,8 +83,7 @@ if (ons.platform.isIPhoneX()) {
 };
 
 
-$.get("json/data.json", function(data){ 
-  var json = $.parseJSON(data); 
-  console.log(json.genre.sake.name);
+$.getJSON("json/data.json", function(data){ 
+  console.log(data.genre.sake.name);
   
 }); 
