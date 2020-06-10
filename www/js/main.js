@@ -85,5 +85,5 @@ if (ons.platform.isIPhoneX()) {
 
 $.getJSON("json/data.json", function(data){ 
   console.log(data.genre.sake.name);
-  
+    
 }); 
