@@ -115,6 +115,9 @@
     margin-bottom: 20px;
     letter-spacing: 2px; 
   }
+.name, .memo, .ster {
+  display: none;
+}
 
 
 /* 一覧ページ */

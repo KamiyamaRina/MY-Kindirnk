@@ -79,6 +79,9 @@ document.addEventListener('init', function(event) {
       $("#genre").change(function() {                         // ジャンルを選択した時
         var genre = $(this).val();                            // genreに選択ジャンルの値代入
         
+        // 名前、メモ、星表示
+        $(".name, .memo, .ster").css('display', 'block');
+
         // 日本酒の場合
         if(genre == "sake") {
 
