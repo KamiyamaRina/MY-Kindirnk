@@ -1,6 +1,4 @@
 
-
-
 // Page init event
   document.addEventListener('init', function(event) {
     var page = event.target;
@@ -74,16 +72,73 @@
         };
       } 
      
+      if (page.matches('#register-page')) {
+        $.getJSON("json/data.json", function(data){ 
+          // console.log(data.genre.sake.name);
+          $("#genre").change(function() {
+            var genre = $(this).val();
+            
+            if(genre == "sake") {
+      
+              $.each(data.genre.sake.Class, function(index, value){
+      
+                var option = '<option value="' + index + '">' + value +'</option>'
+      
+                $('#select_Class > .select-input').append(option);
+      
+              });
+      
+              $.each(data.place.japan, function(index, value){
+                var option = '<option value="' + index + '">' + value +'</option>'
+      
+                $('#select_place > .select-input').append(option);
+      
+              });
+      
+              $.each(data.genre.sake.rice, function(index, value){
+      
+                var option = '<option value="' + index + '">' + value +'</option>'
+      
+                $('#select_rice > .select-input').append(option);
+      
+              });
+      
+              $.each(data.genre.sake.taste, function(index, value){
+      
+                var option = '<option value="' + index + '">' + value +'</option>'
+      
+                $('#select_taste > .select-input').append(option);
+      
+              });
+            
+            }
+            // else if(genre == "redWine") {
+      
+            //   console.log(genre);            
+            
+            // }else if(genre == "whiteWine") {
+      
+            //   console.log(genre);            
+            
+            // }
+      
+            });      
+      
+      
+      
+        }); 
+
+      } 
 
   });
+
+  
+
+
+
+
 
 if (ons.platform.isIPhoneX()) {
   document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
   document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
 };
-
-
-$.getJSON("json/data.json", function(data){ 
-  console.log(data.genre.sake.name);
-    
-}); 
