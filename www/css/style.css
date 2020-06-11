@@ -55,14 +55,14 @@
   }
   
 /* 登録ページ */
-  .genre, .class, .place, .rice , .taste {
+  .genre, .topic {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px 0;
   }
 
-  .genre > ons-select, .class > ons-select, .place > ons-select, .rice > ons-select, .taste > ons-select {
+  .genre > ons-select, .topic > ons-select{
     margin-left: 20px;
     text-align: center;
     margin: 16px;
