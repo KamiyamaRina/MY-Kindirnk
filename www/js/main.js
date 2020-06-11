@@ -135,67 +135,222 @@ document.addEventListener('init', function(event) {
             $('#select_taste > .select-input').append(option);      
           });        
         }
+        
         // 赤ワインの場合
-        // else if(genre == "redWine") {
-        //   $('#change').html(     // html変更
+        else if(genre == "redWine") {
+          $('#change').html(     // html変更
             
-        //     '<div class="class">' + 
-        //       '<p>分類: </p>' + 
-        //       '<ons-select id="select_Class">' + 
-        //         '<option value="" hidden>選択してください</option>' + 
-        //       '</ons-select>' + 
-        //     '</div>' + 
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
     
-        //     '<div class="place">' + 
-        //       '<p>産地: </p>' + 
-        //       '<ons-select id="select_place">' + 
-        //         '<option value="" hidden>選択してください</option>' + 
-        //       '</ons-select>' + 
-        //     '</div>' + 
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
     
-        //     '<div class="rice">' +
-        //       '<p>酒米: </p>' +
-        //       '<ons-select id="select_rice">' +
-        //         '<option value="" hidden>選択してください</option>' + 
-        //       '</ons-select>' + 
-        //     '</div>' + 
+            '<div class="topic">' +
+              '<p>ぶどう: </p>' +
+              '<ons-select id="select_grape">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
 
-        //     '<div class="taste">' +
-        //       '<p>味: </p>' +
-        //       '<ons-select id="select_taste">' +
-        //         '<option value="" hidden>選択してください</option>' + 
-        //       '</ons-select>' + 
-        //     '</div>' 
-
-        //   );
+          );
           
-        //   // selectの選択肢変化
-        //   $.each(data.genre.sake.Class, function(index, value){      
-        //     var option = '<option value="' + index + '">' + value +'</option>'      
-        //     $('#select_Class > .select-input').append(option);      
-        //   });
+          // selectの選択肢変化
+          $.each(data.genre.redWine.Class, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_Class > .select-input').append(option);      
+          });
   
-        //   $.each(data.place.japan, function(index, value){
-        //     var option = '<option value="' + index + '">' + value +'</option>'      
-        //     $('#select_place > .select-input').append(option);      
-        //   });
+          $.each(data.place.wine, function(index, value){
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_place > .select-input').append(option);      
+          });
   
-        //   $.each(data.genre.sake.rice, function(index, value){      
-        //     var option = '<option value="' + index + '">' + value +'</option>'      
-        //     $('#select_rice > .select-input').append(option);      
-        //   });
-  
-        //   $.each(data.genre.sake.taste, function(index, value){      
-        //     var option = '<option value="' + index + '">' + value +'</option>'      
-        //     $('#select_taste > .select-input').append(option);      
-        //   });              
+          $.each(data.genre.redWine.grape, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_grape > .select-input').append(option);      
+          });
         
-        // }
-        // else if(genre == "whiteWine") {
+        }
+
+        // 白ワインの場合
+        else if(genre == "whiteWine") {
   
-        //   console.log(genre);            
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>味わい: </p>' + 
+              '<ons-select id="select_taste">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>ぶどう: </p>' +
+              '<ons-select id="select_grape">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(data.genre.whiteWine.taste, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_taste > .select-input').append(option);      
+          });
+  
+          $.each(data.place.wine, function(index, value){
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_place > .select-input').append(option);      
+          });
+  
+          $.each(data.genre.whiteWine.grape, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_grape > .select-input').append(option);      
+          });           
         
-        // }
+        }
+  
+        // 焼酎の場合
+        else if(genre == "shochu") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>原料: </p>' + 
+              '<ons-select id="select_material">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(data.genre.shochu.Class, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_Class > .select-input').append(option);      
+          });
+          
+          $.each(data.genre.shochu.material, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_material > .select-input').append(option);      
+          });            
+        
+          $.each(data.place.japan, function(index, value){
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_place > .select-input').append(option);      
+          });
+  
+        }
+  
+        // 果実酒の場合
+        else if(genre == "fruitWine") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>果実: </p>' + 
+              '<ons-select id="select_fruit">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>ベース: </p>' + 
+              '<ons-select id="select_base">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>'
+
+          );
+          
+          // selectの選択肢変化
+          $.each(data.genre.fruitWine.fruit, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_fruit > .select-input').append(option);      
+          }); 
+         
+          $.each(data.genre.fruitWine.base, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_base > .select-input').append(option);      
+          });
+        
+        }
+  
+        // カクテルの場合
+        else if(genre == "cocktail") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>ベース: </p>' + 
+              '<ons-select id="select_base">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>割り材: </p>' +
+              '<ons-select id="select_mixer">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(data.genre.cocktail.Class, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_Class > .select-input').append(option);      
+          });
+  
+          $.each(data.genre.cocktail.base, function(index, value){
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_base > .select-input').append(option);      
+          });
+  
+          $.each(data.genre.cocktail.mixer, function(index, value){      
+            var option = '<option value="' + index + '">' + value +'</option>'      
+            $('#select_mixer > .select-input').append(option);      
+          });
+        }
   
       });      
   
