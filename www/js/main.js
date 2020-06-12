@@ -306,17 +306,17 @@ document.addEventListener('init', function(event) {
 
         var listItem = dataList[index];
         
-        var list = '<ons-list-item id="sake" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + listItem.name + '</span>' + '<span class="list-item__subtitle">' + listItem.genre + '</span>' + '</div>' + '</ons-list-item>'
+        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + listItem.name + '</span>' + '<span class="list-item__subtitle">' + listItem.genre + '</span>' + '</div>' + '</ons-list-item>'
         
         $('.lists').append(list);
 
+        // 一覧から詳細
+        page.querySelector('#sake' + index).onclick = function() {
+          document.querySelector('#navigator').pushPage('page5.html', {data: {item: index}});
+        };
         
       }
       
-      // 一覧から詳細
-      page.querySelector('#sake').onclick = function() {
-        document.querySelector('#navigator').pushPage('page5.html');
-      };
       
     });
 
@@ -350,6 +350,13 @@ document.addEventListener('init', function(event) {
 
    // 詳細ページ
   if (page.matches('#detail-page')) {
+    $.getJSON("json/data.json", function(json){               // JSON取得
+      
+    });
+    
+    console.log(page.data.item);
+    
+
     // 詳細から編集
     page.querySelector('#editbutton').onclick = function() {
       document.querySelector('#navigator').pushPage('page6.html');
