@@ -213,7 +213,7 @@
       white-space: nowrap;
     }
 
-    /* .rate0:after {
+    .rate0:after {
       width: 0;
     }
 
@@ -247,7 +247,7 @@
 
     .rate4-5:after {
       width: 162px;
-    } */
+    }
 
     .rate5:after {
       width: 180px;

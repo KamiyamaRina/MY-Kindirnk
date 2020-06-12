@@ -49,7 +49,7 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.sake.Class, function(index, value){      
+          $.each(data.genre.sake.種類, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
@@ -59,12 +59,12 @@ document.addEventListener('init', function(event) {
             $('#select_place > .select-input').append(option);      
           });
   
-          $.each(data.genre.sake.rice, function(index, value){      
+          $.each(data.genre.sake.酒米, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_rice > .select-input').append(option);      
           });
   
-          $.each(data.genre.sake.taste, function(index, value){      
+          $.each(data.genre.sake.味, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_taste > .select-input').append(option);      
           });        
@@ -98,7 +98,7 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.redWine.Class, function(index, value){      
+          $.each(data.genre.redWine.種類, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
@@ -108,7 +108,7 @@ document.addEventListener('init', function(event) {
             $('#select_place > .select-input').append(option);      
           });
   
-          $.each(data.genre.redWine.grape, function(index, value){      
+          $.each(data.genre.redWine.ぶどう, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_grape > .select-input').append(option);      
           });
@@ -144,7 +144,7 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.whiteWine.taste, function(index, value){      
+          $.each(data.genre.whiteWine.味, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_taste > .select-input').append(option);      
           });
@@ -154,7 +154,7 @@ document.addEventListener('init', function(event) {
             $('#select_place > .select-input').append(option);      
           });
   
-          $.each(data.genre.whiteWine.grape, function(index, value){      
+          $.each(data.genre.whiteWine.ぶどう, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_grape > .select-input').append(option);      
           });           
@@ -190,12 +190,12 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.shochu.Class, function(index, value){      
+          $.each(data.genre.shochu.種類, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
           
-          $.each(data.genre.shochu.material, function(index, value){      
+          $.each(data.genre.shochu.原料, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_material > .select-input').append(option);      
           });            
@@ -229,12 +229,12 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.fruitWine.fruit, function(index, value){      
+          $.each(data.genre.fruitWine.果実, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_fruit > .select-input').append(option);      
           }); 
          
-          $.each(data.genre.fruitWine.base, function(index, value){      
+          $.each(data.genre.fruitWine.ベース, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_base > .select-input').append(option);      
           });
@@ -270,17 +270,17 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.cocktail.Class, function(index, value){      
+          $.each(data.genre.cocktail.種類, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
   
-          $.each(data.genre.cocktail.base, function(index, value){
+          $.each(data.genre.cocktail.ベース, function(index, value){
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_base > .select-input').append(option);      
           });
   
-          $.each(data.genre.cocktail.mixer, function(index, value){      
+          $.each(data.genre.cocktail.割り材, function(index, value){      
             var option = '<option value="' + index + '">' + value +'</option>'      
             $('#select_mixer > .select-input').append(option);      
           });
@@ -306,13 +306,13 @@ document.addEventListener('init', function(event) {
 
         var listItem = dataList[index];
         
-        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + listItem.name + '</span>' + '<span class="list-item__subtitle">' + listItem.genre + '</span>' + '</div>' + '</ons-list-item>'
+        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + listItem.name + '</span>' + '<span class="list-item__subtitle">' + listItem.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
         
         $('.lists').append(list);
 
         // 一覧から詳細
         page.querySelector('#sake' + index).onclick = function() {
-          document.querySelector('#navigator').pushPage('page5.html', {data: {item: index}});
+          document.querySelector('#navigator').pushPage('page5.html', {data: {number: index}});
         };
         
       }
@@ -351,10 +351,37 @@ document.addEventListener('init', function(event) {
    // 詳細ページ
   if (page.matches('#detail-page')) {
     $.getJSON("json/data.json", function(json){               // JSON取得
+      var number = page.data.number;
+      var drink = json.data[number];
+      $('#sakeName').html(drink.name);
+
+      var key = Object.keys(drink);
+
+      for (let index = 1; index < key.length; index++) {
+        
+        if (key[index] == "memo") {
+
+          var memo = '<div class="memos">' + '<p>メモ: </p>' + '<p class="note">' + 
+          drink.memo + '</p>' + '</div>';
+
+          $('#detail').append(memo);
+
+        } else if (key[index] == "ster") {
+
+          var ster = '<div class="wrap">' + '<span class="rate rate' + drink.ster + '"></span>' + '</div>';
+
+          $('#detail').append(ster);
+
+        } else {
+          var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + drink[key[index]] + '</p>' + '</div>'
+          
+          $('#detail').append(item);          
+        }
+
+      }
       
     });
     
-    console.log(page.data.item);
     
 
     // 詳細から編集
