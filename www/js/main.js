@@ -3,7 +3,7 @@
 document.addEventListener('init', function(event) {
   var page = event.target;
   
-  // 登録ページ変化
+  // 登録ページ
   if (page.matches('#register-page')) {
     $.getJSON("json/data.json", function(data){               // JSON取得
 
@@ -290,6 +290,11 @@ document.addEventListener('init', function(event) {
   
     }); 
 
+    // 登録から一覧
+    page.querySelector('#sendbutton').onclick = function() {
+      document.querySelector('#navigator').replacePage('page3.html');
+    };
+
   } 
 
   // 一覧ページ
@@ -315,78 +320,57 @@ document.addEventListener('init', function(event) {
       
     });
 
-  } 
-  
-  // ページの動き
-    // topから登録
-    if (page.matches('#top-page')) {
-      page.querySelector('#registerbutton').onclick = function() {
-        document.querySelector('#navigator').pushPage('page2.html');
-      };
-    } 
-    // topから結果
-    if (page.matches('#top-page')) {
-      page.querySelector('#kindbutton').onclick = function() {
-        document.querySelector('#navigator').pushPage('page4.html');
-      };
-    }
-
-    // topから一覧
-    if (page.matches('#top-page')) {
-      page.querySelector('#listbutton').onclick = function() {
-        document.querySelector('#navigator').pushPage('page3.html');
-      };
-    } 
-
-    // 登録から一覧
-    if (page.matches('#register-page')) {
-      page.querySelector('#sendbutton').onclick = function() {
-        document.querySelector('#navigator').replacePage('page3.html');
-      };
-    } 
-
-    // 一覧から詳細
-    // if (page.matches('#list-page')) {
-    //   page.querySelector('#sake').onclick = function() {
-    //     document.querySelector('#navigator').pushPage('page5.html');
-    //   };
-    // } 
-
-    // 詳細から編集
-    if (page.matches('#detail-page')) {
-      page.querySelector('#editbutton').onclick = function() {
-        document.querySelector('#navigator').pushPage('page6.html');
-      };
-    } 
-
-    // 編集から一覧
-    if (page.matches('#edit-page')) {
-      page.querySelector('#sendbutton').onclick = function() {
-        document.querySelector('#navigator').replacePage('page3.html');
-      };
-    } 
-
     // 一覧から登録
-    if (page.matches('#list-page')) {
-      page.querySelector('#registerbutton2').onclick = function() {
-        document.querySelector('#navigator').pushPage('page2.html');
-      };
-    } 
+    page.querySelector('#registerbutton2').onclick = function() {
+      document.querySelector('#navigator').pushPage('page2.html');
+    };
 
     // 一覧からtop
-    if (page.matches('#list-page')) {
-      page.querySelector('#topbutton').onclick = function() {
-        document.querySelector('#navigator').resetToPage('top.html');
-      };
-    } 
+    page.querySelector('#topbutton').onclick = function() {
+      document.querySelector('#navigator').resetToPage('top.html');
+    };
 
-    // 結果からtop
-    if (page.matches('#kind-page')) {
-      page.querySelector('#topbutton').onclick = function() {
-        document.querySelector('#navigator').resetToPage('top.html');
-      };
-    } 
+  } 
   
+  //topページ
+  if (page.matches('#top-page')) {    
+    // topから登録
+    page.querySelector('#registerbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page2.html');
+    };
+      // topから結果
+    page.querySelector('#kindbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page4.html');
+    };
+      // topから一覧
+    page.querySelector('#listbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page3.html');
+    };
+  } 
+
+   // 詳細ページ
+  if (page.matches('#detail-page')) {
+    // 詳細から編集
+    page.querySelector('#editbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page6.html');
+    };
+  } 
+
+  // 結果ページ
+  if (page.matches('#kind-page')) {
+    // 結果からtop
+    page.querySelector('#topbutton').onclick = function() {
+      document.querySelector('#navigator').resetToPage('top.html');
+    };
+  } 
+  
+  // 編集ページ
+  if (page.matches('#edit-page')) {
+    // 編集から一覧
+    page.querySelector('#sendbutton').onclick = function() {
+      document.querySelector('#navigator').replacePage('page3.html');
+    };
+  } 
 
 });
 
