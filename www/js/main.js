@@ -350,8 +350,8 @@ document.addEventListener('init', function(event) {
 
    // 詳細ページ
   if (page.matches('#detail-page')) {
+    var number = page.data.number;
     $.getJSON("json/data.json", function(json){               // JSON取得
-      var number = page.data.number;
       var drink = json.data[number];
       $('#sakeName').html(drink.name);
 
@@ -386,7 +386,7 @@ document.addEventListener('init', function(event) {
 
     // 詳細から編集
     page.querySelector('#editbutton').onclick = function() {
-      document.querySelector('#navigator').pushPage('page6.html');
+      document.querySelector('#navigator').pushPage('page6.html', {data: {number: number}});
     };
   } 
 
@@ -399,12 +399,420 @@ document.addEventListener('init', function(event) {
   } 
   
   // 編集ページ
-  if (page.matches('#edit-page')) {
+  if (page.matches('#edit-page')) {    
+    var number = page.data.number;
+    $.getJSON("json/data.json", function(json){               // JSON取得
+      
+      var drink = json.data[number];
+
+      // ジャンル設定
+      for (let index = 1; index < 6; index++) {
+          
+        var sterValue = 6 - index;
+
+        if (sterValue == drink.ster) {
+          var ster = '<input id="star' + index + '" type="radio" name="star" value="' + sterValue + '" checked/>' + '<label for="star' + index + '"><span class="text">最高</span>★</label>'; 
+
+        } else {
+          var ster = '<input id="star' + index + '" type="radio" name="star" value="' + StereoPannerNode + '" />' + '<label for="star' + index + '"><span class="text">最高</span>★</label>';      
+        }
+        $('.evaluation').append(ster);
+
+      }
+      
+
+      $("#genre").change(function() {                         // ジャンルを選択した時
+        var genre = $(this).val();                            // genreに選択ジャンルの値代入
+        
+        // 名前、メモ、星表示
+        $(".name, .memo, .ster").css('display', 'block');
+
+        // 日本酒の場合
+        if(genre == "sake") {
+
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>酒米: </p>' +
+              '<ons-select id="select_rice">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+
+            '<div class="topic">' +
+              '<p>味: </p>' +
+              '<ons-select id="select_taste">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.sake.種類, function(index, value){      
+            
+            if (value == drink.種類) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+
+            $('#select_Class > .select-input').append(option);      
+          });
+  
+          $.each(json.place.japan, function(index, value){
+            if (value == drink.産地) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }      
+            $('#select_place > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.sake.酒米, function(index, value){      
+            if (value == drink.酒米) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }      
+            $('#select_rice > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.sake.味, function(index, value){      
+            if (value == drink.味) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }      
+            $('#select_taste > .select-input').append(option);      
+          });        
+        }
+        
+        // 赤ワインの場合
+        else if(genre == "redWine") {
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>ぶどう: </p>' +
+              '<ons-select id="select_grape">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.redWine.種類, function(index, value){      
+            if (value == drink.種類) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }     
+            $('#select_Class > .select-input').append(option);      
+          });
+  
+          $.each(json.place.wine, function(index, value){
+            if (value == drink.産地) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }     
+            $('#select_place > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.redWine.ぶどう, function(index, value){      
+            if (value == drink.ぶどう) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }     
+            $('#select_grape > .select-input').append(option);      
+          });
+        
+        }
+
+        // 白ワインの場合
+        else if(genre == "whiteWine") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>味わい: </p>' + 
+              '<ons-select id="select_taste">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>ぶどう: </p>' +
+              '<ons-select id="select_grape">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.whiteWine.味, function(index, value){      
+            if (value == drink.味) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }     
+            $('#select_taste > .select-input').append(option);      
+          });
+  
+          $.each(json.place.wine, function(index, value){
+            if (value == drink.産地) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }      
+            $('#select_place > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.whiteWine.ぶどう, function(index, value){      
+            if (value == drink.ぶどう) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }      
+            $('#select_grape > .select-input').append(option);      
+          });           
+        
+        }
+  
+        // 焼酎の場合
+        else if(genre == "shochu") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>原料: </p>' + 
+              '<ons-select id="select_material">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>産地: </p>' + 
+              '<ons-select id="select_place">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.shochu.種類, function(index, value){      
+            if (value == drink.種類) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_Class > .select-input').append(option);      
+          });
+          
+          $.each(json.genre.shochu.原料, function(index, value){      
+            if (value == drink.原料) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_material > .select-input').append(option);      
+          });            
+        
+          $.each(json.place.japan, function(index, value){
+            if (value == drink.産地) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_place > .select-input').append(option);      
+          });
+  
+        }
+  
+        // 果実酒の場合
+        else if(genre == "fruitWine") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>果実: </p>' + 
+              '<ons-select id="select_fruit">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>ベース: </p>' + 
+              '<ons-select id="select_base">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>'
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.fruitWine.果実, function(index, value){      
+           if (value == drink.果実) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_fruit > .select-input').append(option);      
+          }); 
+         
+          $.each(json.genre.fruitWine.ベース, function(index, value){      
+           if (value == drink.ベース) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_base > .select-input').append(option);      
+          });
+        
+        }
+  
+        // カクテルの場合
+        else if(genre == "cocktail") {
+  
+          $('#change').html(     // html変更
+            
+            '<div class="topic">' + 
+              '<p>分類: </p>' + 
+              '<ons-select id="select_Class">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' + 
+              '<p>ベース: </p>' + 
+              '<ons-select id="select_base">' + 
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' + 
+    
+            '<div class="topic">' +
+              '<p>割り材: </p>' +
+              '<ons-select id="select_mixer">' +
+                '<option value="" hidden>選択してください</option>' + 
+              '</ons-select>' + 
+            '</div>' 
+
+          );
+          
+          // selectの選択肢変化
+          $.each(json.genre.cocktail.種類, function(index, value){      
+            if (value == drink.種類) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_Class > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.cocktail.ベース, function(index, value){
+            if (value == drink.ベース) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_base > .select-input').append(option);      
+          });
+  
+          $.each(json.genre.cocktail.割り材, function(index, value){      
+            if (value == drink.割り材) {
+              var option = '<option value="' + index + '" selected>' + value +'</option>'
+            } else {
+              var option = '<option value="' + index + '">' + value +'</option>'              
+            }
+            $('#select_mixer > .select-input').append(option);      
+          });
+        } 
+        
+        // 名前,メモの初期値設定
+        $('.name').html(     // html変更
+          '<ons-input type="text" placeholder="お酒の名前" modifier="underbar" value=' + drink.name + '></ons-input>'
+        );
+        $('.memo').html(     // html変更
+          '<textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ">' + drink.memo + '</textarea>'
+        );
+
+        
+        // 星設定
+        for (let index = 1; index < 6; index++) {
+          
+          var sterValue = 6 - index;
+
+          if (sterValue == drink.ster) {
+            var ster = '<input id="star' + index + '" type="radio" name="star" value="' + sterValue + '" checked/>' + '<label for="star' + index + '"><span class="text">最高</span>★</label>'; 
+
+          } else {
+            var ster = '<input id="star' + index + '" type="radio" name="star" value="' + StereoPannerNode + '" />' + '<label for="star' + index + '"><span class="text">最高</span>★</label>';      
+          }
+          $('.evaluation').append(ster);
+
+        }
+
+
+
+    
+
+      });      
+    }); 
+
     // 編集から一覧
     page.querySelector('#sendbutton').onclick = function() {
       document.querySelector('#navigator').replacePage('page3.html');
     };
+
   } 
+
+
 
 });
 

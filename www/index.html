@@ -191,7 +191,7 @@
         <!-- ジャンル選択 -->
         <div class="genre">
           <p>ジャンル: </p>
-          <ons-select>
+          <ons-select id="genre">
             <option value="" hidden>選択してください</option>
             <option value="sake">日本酒</option>
             <option value="redWine">赤ワイン</option>
@@ -202,76 +202,27 @@
           </ons-select>
         </div>
 
+
+        
         <!-- 名前入力 -->
-        <div class="name">
-          <ons-input type="text" placeholder="お酒の名前" modifier="underbar"></ons-input>
+        <div class="name ">
+          <!-- <ons-input type="text" placeholder="お酒の名前" modifier="underbar"></ons-input> -->
         </div>
         
         <!-- 変化するとこ -->
-        <div>
-          <!-- 分類選択 -->
-          <div class="class">
-            <p>分類: </p>
-            <ons-select>
-              <option value="" hidden>選択してください</option>
-              <option value="daiginjo">大吟醸</option>
-              <option value="ginjo">吟醸</option>
-              <option value="junmai">純米</option>
-              <option value="junmaidaiginjo">純米大吟醸</option>
-              <option value="
-              brewed">醸造酒</option>
-            </ons-select>
-          </div>
-  
-          <!-- 産地選択 -->
-          <div class="place">
-            <p>産地: </p>
-            <ons-select>
-              <option value="" hidden>選択してください</option>
-              <option value="hokkaidou">北海道</option>
-              <option value="niigata">新潟</option>
-              <option value="nagano">長野</option>
-              <option value="kyoto">京都</option>
-              <option value="hirosima">広島</option>
-            </ons-select>
-          </div>
-  
-          <!-- 酒米選択 -->
-          <div class="rice">
-            <p>酒米: </p>
-            <ons-select>
-              <option value="" hidden>選択してください</option>
-              <option value="yamadanisiki">山田錦</option>
-              <option value="gohyakumanngoku">五百万石</option>
-              <option value="miyamanisiki">美山錦</option>
-              <option value="omati">雄町</option>
-            </ons-select>
-          </div>
-
-          <!-- 味選択 -->
-          <div class="taste">
-            <p>味: </p>
-            <ons-select>
-              <option value="" hidden>選択してください</option>
-              <option value="tanreikarakuti">淡麗辛口</option>
-              <option value="houjunkarakuti">芳醇辛口</option>
-              <option value="tanreiamakuti">淡麗甘口</option>
-              <option value="houjunamakuti">芳醇甘口</option>
-            </ons-select>
-          </div>
-          
+        <div id="change">
         </div>
 
         <!-- メモ欄 -->
         <div class="memo">
-          <textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ"></textarea>
+          <!-- <textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ"></textarea> -->
         </div>
 
         <!-- 星入力 -->
         <div class="ster">
           <form type="get" action="#">
             <div class="evaluation">
-              <input id="star1" type="radio" name="star" value="5" />
+              <!-- <input id="star1" type="radio" name="star" value="5" />
               <label for="star1"><span class="text">最高</span>★</label>
               <input id="star2" type="radio" name="star" value="4" />
               <label for="star2"><span class="text">良い</span>★</label>
@@ -280,7 +231,7 @@
               <input id="star4" type="radio" name="star" value="2" />
               <label for="star4"><span class="text">悪い</span>★</label>
               <input id="star5" type="radio" name="star" value="1" />
-              <label for="star5"><span class="text">最悪</span>★</label>
+              <label for="star5"><span class="text">最悪</span>★</label> -->
             </div>
           </form>
         </div>
