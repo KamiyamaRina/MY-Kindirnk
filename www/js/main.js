@@ -50,22 +50,22 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.日本酒.種類, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
   
           $.each(data.place.japan, function(index, value){
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(data.genre.日本酒.酒米, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_rice > .select-input').append(option);      
           });
   
           $.each(data.genre.日本酒.味, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_taste > .select-input').append(option);      
           });        
         }
@@ -99,17 +99,17 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.赤ワイン.種類, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
   
           $.each(data.place.wine, function(index, value){
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(data.genre.赤ワイン.ぶどう, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_grape > .select-input').append(option);      
           });
         
@@ -145,17 +145,17 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.白ワイン.味, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_taste > .select-input').append(option);      
           });
   
           $.each(data.place.wine, function(index, value){
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(data.genre.白ワイン.ぶどう, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_grape > .select-input').append(option);      
           });           
         
@@ -191,17 +191,17 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.焼酎.種類, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
           
           $.each(data.genre.焼酎.原料, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_material > .select-input').append(option);      
           });            
         
           $.each(data.place.japan, function(index, value){
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_place > .select-input').append(option);      
           });
   
@@ -230,12 +230,12 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.果実酒.果実, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_fruit > .select-input').append(option);      
           }); 
          
           $.each(data.genre.果実酒.ベース, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_base > .select-input').append(option);      
           });
         
@@ -271,17 +271,17 @@ document.addEventListener('init', function(event) {
           
           // selectの選択肢変化
           $.each(data.genre.カクテル.種類, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_Class > .select-input').append(option);      
           });
   
           $.each(data.genre.カクテル.ベース, function(index, value){
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_base > .select-input').append(option);      
           });
   
           $.each(data.genre.カクテル.割り材, function(index, value){      
-            var option = '<option value="' + index + '">' + value +'</option>'      
+            var option = '<option value="' + value + '">' + value +'</option>'      
             $('#select_mixer > .select-input').append(option);      
           });
         }
@@ -289,6 +289,9 @@ document.addEventListener('init', function(event) {
       });
   
     }); 
+
+    // 登録情報取得
+
 
     // 登録から一覧
     page.querySelector('#sendbutton').onclick = function() {
@@ -464,9 +467,9 @@ document.addEventListener('init', function(event) {
           $.each(json.genre.日本酒.種類, function(index, value){      
             
             if (value == drink.種類) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
 
             $('#select_Class > .select-input').append(option);      
@@ -474,27 +477,27 @@ document.addEventListener('init', function(event) {
   
           $.each(json.place.japan, function(index, value){
             if (value == drink.産地) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.酒米, function(index, value){      
             if (value == drink.酒米) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_rice > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.味, function(index, value){      
             if (value == drink.味) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_taste > .select-input').append(option);      
           });        
@@ -530,27 +533,27 @@ document.addEventListener('init', function(event) {
           // selectの選択肢変化
           $.each(json.genre.赤ワイン.種類, function(index, value){      
             if (value == drink.種類) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }     
             $('#select_Class > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
             if (value == drink.産地) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }     
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(json.genre.赤ワイン.ぶどう, function(index, value){      
             if (value == drink.ぶどう) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }     
             $('#select_grape > .select-input').append(option);      
           });
@@ -588,27 +591,27 @@ document.addEventListener('init', function(event) {
           // selectの選択肢変化
           $.each(json.genre.白ワイン.味, function(index, value){      
             if (value == drink.味) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }     
             $('#select_taste > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
             if (value == drink.産地) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(json.genre.白ワイン.ぶどう, function(index, value){      
             if (value == drink.ぶどう) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_grape > .select-input').append(option);      
           });           
@@ -646,27 +649,27 @@ document.addEventListener('init', function(event) {
           // selectの選択肢変化
           $.each(json.genre.焼酎.種類, function(index, value){      
             if (value == drink.種類) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_Class > .select-input').append(option);      
           });
           
           $.each(json.genre.焼酎.原料, function(index, value){      
             if (value == drink.原料) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_material > .select-input').append(option);      
           });            
         
           $.each(json.place.japan, function(index, value){
             if (value == drink.産地) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_place > .select-input').append(option);      
           });
@@ -697,18 +700,18 @@ document.addEventListener('init', function(event) {
           // selectの選択肢変化
           $.each(json.genre.果実酒.果実, function(index, value){      
             if (value == drink.果実) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_fruit > .select-input').append(option);      
           }); 
           
           $.each(json.genre.果実酒.ベース, function(index, value){      
             if (value == drink.ベース) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_base > .select-input').append(option);      
           });
@@ -746,27 +749,27 @@ document.addEventListener('init', function(event) {
           // selectの選択肢変化
           $.each(json.genre.カクテル.種類, function(index, value){      
             if (value == drink.種類) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_Class > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.ベース, function(index, value){
             if (value == drink.ベース) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_base > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.割り材, function(index, value){      
             if (value == drink.割り材) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
             $('#select_mixer > .select-input').append(option);      
           });
@@ -843,9 +846,9 @@ document.addEventListener('init', function(event) {
           $.each(json.genre.日本酒.種類, function(index, value){      
             
             if (value == drink.種類) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }
 
             $('#select_Class > .select-input').append(option);      
@@ -853,25 +856,25 @@ document.addEventListener('init', function(event) {
   
           $.each(json.place.japan, function(index, value){
             if (value == drink.産地) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_place > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.酒米, function(index, value){      
             if (value == drink.酒米) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
-              var option = '<option value="' + index + '">' + value +'</option>'              
+              var option = '<option value="' + value + '">' + value +'</option>'              
             }      
             $('#select_rice > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.味, function(index, value){      
             if (value == drink.味) {
-              var option = '<option value="' + index + '" selected>' + value +'</option>'
+              var option = '<option value="' + value + '" selected>' + value +'</option>'
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }      
