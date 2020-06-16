@@ -1,3 +1,4 @@
+"use strict";
 
 // Page init event
 document.addEventListener('init', function(event) {
@@ -5,7 +6,7 @@ document.addEventListener('init', function(event) {
   
   // 登録ページ
   if (page.matches('#register-page')) {
-    $.getJSON("json/data.json", function(data){               // JSON取得
+    $.getJSON("json/data.json", function(json){               // JSON取得
 
       $("#genre").change(function() {                         // ジャンルを選択した時
         var genre = $(this).val();                            // genreに選択ジャンルの値代入
@@ -20,28 +21,28 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>酒米: </p>' +
-              '<ons-select id="select_rice">' +
+              '<ons-select id="select_酒米">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
 
             '<div class="topic">' +
               '<p>味: </p>' +
-              '<ons-select id="select_taste">' +
+              '<ons-select id="select_味">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -49,24 +50,24 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.日本酒.種類, function(index, value){      
+          $.each(json.genre.日本酒.種類, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
-          $.each(data.place.japan, function(index, value){
+          $.each(json.place.japan, function(index, value){
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
-          $.each(data.genre.日本酒.酒米, function(index, value){      
+          $.each(json.genre.日本酒.酒米, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_rice > .select-input').append(option);      
+            $('#select_酒米 > .select-input').append(option);      
           });
   
-          $.each(data.genre.日本酒.味, function(index, value){      
+          $.each(json.genre.日本酒.味, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });        
         }
         
@@ -76,21 +77,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -98,19 +99,19 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.赤ワイン.種類, function(index, value){      
+          $.each(json.genre.赤ワイン.種類, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
-          $.each(data.place.wine, function(index, value){
+          $.each(json.place.wine, function(index, value){
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
-          $.each(data.genre.赤ワイン.ぶどう, function(index, value){      
+          $.each(json.genre.赤ワイン.ぶどう, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });
         
         }
@@ -122,21 +123,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>味わい: </p>' + 
-              '<ons-select id="select_taste">' + 
+              '<ons-select id="select_味">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -144,19 +145,19 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.白ワイン.味, function(index, value){      
+          $.each(json.genre.白ワイン.味, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });
   
-          $.each(data.place.wine, function(index, value){
+          $.each(json.place.wine, function(index, value){
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
-          $.each(data.genre.白ワイン.ぶどう, function(index, value){      
+          $.each(json.genre.白ワイン.ぶどう, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });           
         
         }
@@ -168,21 +169,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>原料: </p>' + 
-              '<ons-select id="select_material">' + 
+              '<ons-select id="select_原料">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -190,19 +191,19 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.焼酎.種類, function(index, value){      
+          $.each(json.genre.焼酎.種類, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
           
-          $.each(data.genre.焼酎.原料, function(index, value){      
+          $.each(json.genre.焼酎.原料, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_material > .select-input').append(option);      
+            $('#select_原料 > .select-input').append(option);      
           });            
         
-          $.each(data.place.japan, function(index, value){
+          $.each(json.place.japan, function(index, value){
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
         }
@@ -214,14 +215,14 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>果実: </p>' + 
-              '<ons-select id="select_fruit">' + 
+              '<ons-select id="select_果実">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>'
@@ -229,14 +230,14 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.果実酒.果実, function(index, value){      
+          $.each(json.genre.果実酒.果実, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_fruit > .select-input').append(option);      
+            $('#select_果実 > .select-input').append(option);      
           }); 
          
-          $.each(data.genre.果実酒.ベース, function(index, value){      
+          $.each(json.genre.果実酒.ベース, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
         
         }
@@ -248,21 +249,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>割り材: </p>' +
-              '<ons-select id="select_mixer">' +
+              '<ons-select id="select_割り材">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -270,29 +271,75 @@ document.addEventListener('init', function(event) {
           );
           
           // selectの選択肢変化
-          $.each(data.genre.カクテル.種類, function(index, value){      
+          $.each(json.genre.カクテル.種類, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
-          $.each(data.genre.カクテル.ベース, function(index, value){
+          $.each(json.genre.カクテル.ベース, function(index, value){
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
   
-          $.each(data.genre.カクテル.割り材, function(index, value){      
+          $.each(json.genre.カクテル.割り材, function(index, value){      
             var option = '<option value="' + value + '">' + value +'</option>'      
-            $('#select_mixer > .select-input').append(option);      
+            $('#select_割り材 > .select-input').append(option);      
           });
         }
   
       });
   
+      // 登録
+      $('#sendbutton').click(function() {
+        
+        var send = {};
+        send.name = $('#name').val();
+        send.ジャンル = $('#genre option:selected').val();
+        send.memo = $("#memo").val();
+        send.ster =  $('input:radio[name="star"]:checked').val();
+
+        if ($('#genre option:selected').val() == "日本酒") {
+          send.種類 = $('#select_種類 option:selected').val();
+          send.産地 = $('#select_産地 option:selected').val();
+          send.酒米 = $('#select_酒米 option:selected').val();
+          send.味 = $('#select_味 option:selected').val();
+        }
+        else if ($('#genre option:selected').val() == "赤ワイン") {
+          send.種類 = $('#select_種類 option:selected').val();
+          send.産地 = $('#select_産地 option:selected').val();
+          send.ぶどう = $('#select_ぶどう option:selected').val();          
+        }
+        else if ($('#genre option:selected').val() == "白ワイン") {
+          send.味 = $('#select_味 option:selected').val();
+          send.産地 = $('#select_産地 option:selected').val();
+          send.ぶどう = $('#select_ぶどう option:selected').val();          
+        }
+        else if ($('#genre option:selected').val() == "焼酎") {
+          send.種類 = $('#select_種類 option:selected').val();
+          send.原料 = $('#select_原料 option:selected').val();
+          send.産地 = $('#select_産地 option:selected').val();          
+        }
+        else if ($('#genre option:selected').val() == "果実酒") {
+          send.果実 = $('#select_果実 option:selected').val();
+          send.ベース = $('#select_ベース option:selected').val();       
+        }
+        else if ($('#genre option:selected').val() == "赤ワイン") {
+          send.種類 = $('#select_種類 option:selected').val();
+          send.ベース = $('#select_ベース option:selected').val();
+          send.割り材 = $('#select_割り材 option:selected').val();          
+        }
+        
+        // console.log(send);
+
+        var number = localStorage.length + 1;
+        
+        var data = JSON.stringify(send);
+        localStorage.setItem('data'+number, data);                // データ1, データ2..
+
+      });
+
+
     }); 
-
-    // 登録情報取得
-
-
     // 登録から一覧
     page.querySelector('#sendbutton').onclick = function() {
       document.querySelector('#navigator').replacePage('page3.html');
@@ -322,6 +369,16 @@ document.addEventListener('init', function(event) {
       
       
     });
+
+    var jsonObj = localStorage.getItem('data1');
+    var jsObj = JSON.parse(jsonObj);
+    console.log(jsObj);
+    var jsonObj2 = localStorage.getItem('data2');
+    var jsObj2 = JSON.parse(jsonObj2);
+    console.log(jsObj2);
+
+    console.log();
+    
 
     // 一覧から登録
     page.querySelector('#registerbutton2').onclick = function() {
@@ -405,7 +462,7 @@ document.addEventListener('init', function(event) {
   if (page.matches('#edit-page')) {    
     var number = page.data.number;
     $.getJSON("json/data.json", function(json){               // JSON取得
-      
+
       var drink = json.data[number];
 
       // ジャンル設定
@@ -435,28 +492,28 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>酒米: </p>' +
-              '<ons-select id="select_rice">' +
+              '<ons-select id="select_酒米">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
 
             '<div class="topic">' +
               '<p>味: </p>' +
-              '<ons-select id="select_taste">' +
+              '<ons-select id="select_味">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -472,7 +529,7 @@ document.addEventListener('init', function(event) {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
 
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.place.japan, function(index, value){
@@ -481,7 +538,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.酒米, function(index, value){      
@@ -490,7 +547,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_rice > .select-input').append(option);      
+            $('#select_酒米 > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.味, function(index, value){      
@@ -499,7 +556,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });        
         }
         
@@ -509,21 +566,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -537,7 +594,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }     
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
@@ -546,7 +603,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }     
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.赤ワイン.ぶどう, function(index, value){      
@@ -555,7 +612,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }     
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });
         
         }
@@ -567,21 +624,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>味わい: </p>' + 
-              '<ons-select id="select_taste">' + 
+              '<ons-select id="select_味">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -595,7 +652,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }     
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
@@ -604,7 +661,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.白ワイン.ぶどう, function(index, value){      
@@ -613,7 +670,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });           
         
         }
@@ -625,21 +682,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>原料: </p>' + 
-              '<ons-select id="select_material">' + 
+              '<ons-select id="select_原料">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -653,7 +710,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
           
           $.each(json.genre.焼酎.原料, function(index, value){      
@@ -662,7 +719,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_material > .select-input').append(option);      
+            $('#select_原料 > .select-input').append(option);      
           });            
         
           $.each(json.place.japan, function(index, value){
@@ -671,7 +728,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
         }
@@ -683,14 +740,14 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>果実: </p>' + 
-              '<ons-select id="select_fruit">' + 
+              '<ons-select id="select_果実">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>'
@@ -704,7 +761,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_fruit > .select-input').append(option);      
+            $('#select_果実 > .select-input').append(option);      
           }); 
           
           $.each(json.genre.果実酒.ベース, function(index, value){      
@@ -713,7 +770,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
         
         }
@@ -725,21 +782,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>割り材: </p>' +
-              '<ons-select id="select_mixer">' +
+              '<ons-select id="select_割り材">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -753,7 +810,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.ベース, function(index, value){
@@ -762,7 +819,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.割り材, function(index, value){      
@@ -771,7 +828,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
-            $('#select_mixer > .select-input').append(option);      
+            $('#select_割り材 > .select-input').append(option);      
           });
         } 
         
@@ -814,28 +871,28 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>酒米: </p>' +
-              '<ons-select id="select_rice">' +
+              '<ons-select id="select_酒米">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
 
             '<div class="topic">' +
               '<p>味: </p>' +
-              '<ons-select id="select_taste">' +
+              '<ons-select id="select_味">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -851,7 +908,7 @@ document.addEventListener('init', function(event) {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }
 
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.place.japan, function(index, value){
@@ -860,7 +917,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.酒米, function(index, value){      
@@ -869,7 +926,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + value + '">' + value +'</option>'              
             }      
-            $('#select_rice > .select-input').append(option);      
+            $('#select_酒米 > .select-input').append(option);      
           });
   
           $.each(json.genre.日本酒.味, function(index, value){      
@@ -878,7 +935,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }      
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });        
         }
         
@@ -888,21 +945,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -916,7 +973,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }     
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
@@ -925,7 +982,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }     
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.赤ワイン.ぶどう, function(index, value){      
@@ -934,7 +991,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }     
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });
         
         }
@@ -946,21 +1003,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>味わい: </p>' + 
-              '<ons-select id="select_taste">' + 
+              '<ons-select id="select_味">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>ぶどう: </p>' +
-              '<ons-select id="select_grape">' +
+              '<ons-select id="select_ぶどう">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -974,7 +1031,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }     
-            $('#select_taste > .select-input').append(option);      
+            $('#select_味 > .select-input').append(option);      
           });
   
           $.each(json.place.wine, function(index, value){
@@ -983,7 +1040,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }      
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
           $.each(json.genre.白ワイン.ぶどう, function(index, value){      
@@ -992,7 +1049,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }      
-            $('#select_grape > .select-input').append(option);      
+            $('#select_ぶどう > .select-input').append(option);      
           });           
         
         }
@@ -1004,21 +1061,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>原料: </p>' + 
-              '<ons-select id="select_material">' + 
+              '<ons-select id="select_原料">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>産地: </p>' + 
-              '<ons-select id="select_place">' + 
+              '<ons-select id="select_産地">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -1032,7 +1089,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
           
           $.each(json.genre.焼酎.原料, function(index, value){      
@@ -1041,7 +1098,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_material > .select-input').append(option);      
+            $('#select_原料 > .select-input').append(option);      
           });            
         
           $.each(json.place.japan, function(index, value){
@@ -1050,7 +1107,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_place > .select-input').append(option);      
+            $('#select_産地 > .select-input').append(option);      
           });
   
         }
@@ -1062,14 +1119,14 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>果実: </p>' + 
-              '<ons-select id="select_fruit">' + 
+              '<ons-select id="select_果実">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>'
@@ -1083,7 +1140,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_fruit > .select-input').append(option);      
+            $('#select_果実 > .select-input').append(option);      
           }); 
           
           $.each(json.genre.果実酒.ベース, function(index, value){      
@@ -1092,7 +1149,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
         
         }
@@ -1104,21 +1161,21 @@ document.addEventListener('init', function(event) {
             
             '<div class="topic">' + 
               '<p>分類: </p>' + 
-              '<ons-select id="select_Class">' + 
+              '<ons-select id="select_種類">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' + 
               '<p>ベース: </p>' + 
-              '<ons-select id="select_base">' + 
+              '<ons-select id="select_ベース">' + 
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' + 
     
             '<div class="topic">' +
               '<p>割り材: </p>' +
-              '<ons-select id="select_mixer">' +
+              '<ons-select id="select_割り材">' +
                 '<option value="" hidden>選択してください</option>' + 
               '</ons-select>' + 
             '</div>' 
@@ -1132,7 +1189,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_Class > .select-input').append(option);      
+            $('#select_種類 > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.ベース, function(index, value){
@@ -1141,7 +1198,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_base > .select-input').append(option);      
+            $('#select_ベース > .select-input').append(option);      
           });
   
           $.each(json.genre.カクテル.割り材, function(index, value){      
@@ -1150,7 +1207,7 @@ document.addEventListener('init', function(event) {
             } else {
               var option = '<option value="' + index + '">' + value +'</option>'              
             }
-            $('#select_mixer > .select-input').append(option);      
+            $('#select_割り材 > .select-input').append(option);      
           });
         }    
 

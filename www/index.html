@@ -50,20 +50,20 @@
           <p>ジャンル: </p>
           <ons-select id="genre">
             <option value="" hidden>選択してください</option>
-            <option value="sake">日本酒</option>
-            <option value="redWine">赤ワイン</option>
-            <option value="whiteWine">白ワイン</option>
-            <option value="shochu">焼酎</option>
-            <option value="fruitWine">果実酒</option>
-            <option value="cocktail">カクテル</option>
+            <option value="日本酒">日本酒</option>
+            <option value="赤ワイン">赤ワイン</option>
+            <option value="白ワイン">白ワイン</option>
+            <option value="焼酎">焼酎</option>
+            <option value="果実酒">果実酒</option>
+            <option value="カクテル">カクテル</option>
           </ons-select>
         </div>
 
 
         
         <!-- 名前入力 -->
-        <div class="name ">
-          <ons-input type="text" placeholder="お酒の名前" modifier="underbar"></ons-input>
+        <div class="name">
+          <ons-input type="text" placeholder="お酒の名前" modifier="underbar" id="name"></ons-input>
         </div>
         
         <!-- 変化するとこ -->
@@ -72,12 +72,11 @@
 
         <!-- メモ欄 -->
         <div class="memo">
-          <textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ"></textarea>
+          <textarea id="memo" cols="40" rows="5" placeholder="メモ"></textarea>
         </div>
 
         <!-- 星入力 -->
         <div class="ster">
-          <form type="get" action="#">
             <div class="evaluation">
               <input id="star1" type="radio" name="star" value="5" />
               <label for="star1"><span class="text">最高</span>★</label>
@@ -90,7 +89,6 @@
               <input id="star5" type="radio" name="star" value="1" />
               <label for="star5"><span class="text">最悪</span>★</label>
             </div>
-          </form>
         </div>
 
         <ons-button id="sendbutton">登録</ons-button>
@@ -193,12 +191,6 @@
           <p>ジャンル: </p>
           <ons-select id="genre">
             <option value="" hidden>選択してください</option>
-            <!-- <option value="sake">日本酒</option>
-            <option value="redWine">赤ワイン</option>
-            <option value="whiteWine">白ワイン</option>
-            <option value="shochu">焼酎</option>
-            <option value="fruitWine">果実酒</option>
-            <option value="cocktail">カクテル</option> -->
           </ons-select>
         </div>
 
@@ -206,7 +198,6 @@
         
         <!-- 名前入力 -->
         <div class="name ">
-          <!-- <ons-input type="text" placeholder="お酒の名前" modifier="underbar"></ons-input> -->
         </div>
         
         <!-- 変化するとこ -->
@@ -215,23 +206,12 @@
 
         <!-- メモ欄 -->
         <div class="memo">
-          <!-- <textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ"></textarea> -->
         </div>
 
         <!-- 星入力 -->
         <div class="ster">
           <form type="get" action="#">
             <div class="evaluation">
-              <!-- <input id="star1" type="radio" name="star" value="5" />
-              <label for="star1"><span class="text">最高</span>★</label>
-              <input id="star2" type="radio" name="star" value="4" />
-              <label for="star2"><span class="text">良い</span>★</label>
-              <input id="star3" type="radio" name="star" value="3" />
-              <label for="star3"><span class="text">普通</span>★</label>
-              <input id="star4" type="radio" name="star" value="2" />
-              <label for="star4"><span class="text">悪い</span>★</label>
-              <input id="star5" type="radio" name="star" value="1" />
-              <label for="star5"><span class="text">最悪</span>★</label> -->
             </div>
           </form>
         </div>
