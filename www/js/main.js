@@ -328,11 +328,8 @@ document.addEventListener('init', function(event) {
           send.ベース = $('#select_ベース option:selected').val();
           send.割り材 = $('#select_割り材 option:selected').val();          
         }
-        
-        // console.log(send);
 
-        var number = localStorage.length + 1;
-        
+        var number = localStorage.length + 1;        
         var data = JSON.stringify(send);
         localStorage.setItem('data'+number, data);                // データ1, データ2..
 
@@ -349,14 +346,14 @@ document.addEventListener('init', function(event) {
 
   // 一覧ページ
   if (page.matches('#list-page')) {
-    $.getJSON("json/data.json", function(json){               // JSON取得
-      var dataList = json.data;
 
-      for (let index = 0; index < dataList.length; index++) {
+      for (let index = 1; index < localStorage.length+1; index++) {
 
-        var listItem = dataList[index];
+        var dataIndex = 'data'+index;
+        var jsonData = localStorage.getItem(dataIndex);
+        var jsData = JSON.parse(jsonData);
         
-        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + listItem.name + '</span>' + '<span class="list-item__subtitle">' + listItem.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
+        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + jsData.name + '</span>' + '<span class="list-item__subtitle">' + jsData.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
         
         $('.lists').append(list);
 
@@ -365,19 +362,9 @@ document.addEventListener('init', function(event) {
           document.querySelector('#navigator').pushPage('page5.html', {data: {number: index}});
         };
         
+        console.log(jsData);
+        
       }
-      
-      
-    });
-
-    var jsonObj = localStorage.getItem('data1');
-    var jsObj = JSON.parse(jsonObj);
-    console.log(jsObj);
-    var jsonObj2 = localStorage.getItem('data2');
-    var jsObj2 = JSON.parse(jsonObj2);
-    console.log(jsObj2);
-
-    console.log();
     
 
     // 一覧から登録
