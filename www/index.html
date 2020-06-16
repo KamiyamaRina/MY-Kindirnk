@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
   <script src="components/loader.js"></script>
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -13,17 +16,19 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
-  
+
   <script src="js/main.js"></script>
-  
+
 </head>
+
 <body>
   <ons-navigator id="navigator" page="top.html"></ons-navigator>
 
   <!-- トップページ -->
   <ons-template id="top.html">
     <ons-page id="top-page">
-      <div class="background" style="background: linear-gradient( hsla(15,100%, 73%, 0.1), hsla(195,100%,27%,0.5) 80%, #00698C);"></div>
+      <div class="background"
+        style="background: linear-gradient( hsla(15,100%, 73%, 0.1), hsla(195,100%,27%,0.5) 80%, #00698C);"></div>
       <div class="content">
         <img src="images/top1.png" alt="MY kindrink" class="topImage">
         <ons-button id="registerbutton">お酒の登録</ons-button>
@@ -60,12 +65,12 @@
         </div>
 
 
-        
+
         <!-- 名前入力 -->
         <div class="name">
           <ons-input type="text" placeholder="お酒の名前" modifier="underbar" id="name"></ons-input>
         </div>
-        
+
         <!-- 変化するとこ -->
         <div id="change">
         </div>
@@ -77,24 +82,24 @@
 
         <!-- 星入力 -->
         <div class="ster">
-            <div class="evaluation">
-              <input id="star1" type="radio" name="star" value="5" />
-              <label for="star1"><span class="text">最高</span>★</label>
-              <input id="star2" type="radio" name="star" value="4" />
-              <label for="star2"><span class="text">良い</span>★</label>
-              <input id="star3" type="radio" name="star" value="3" />
-              <label for="star3"><span class="text">普通</span>★</label>
-              <input id="star4" type="radio" name="star" value="2" />
-              <label for="star4"><span class="text">悪い</span>★</label>
-              <input id="star5" type="radio" name="star" value="1" />
-              <label for="star5"><span class="text">最悪</span>★</label>
-            </div>
+          <div class="evaluation">
+            <input id="star1" type="radio" name="star" value="5" />
+            <label for="star1"><span class="text">最高</span>★</label>
+            <input id="star2" type="radio" name="star" value="4" />
+            <label for="star2"><span class="text">良い</span>★</label>
+            <input id="star3" type="radio" name="star" value="3" />
+            <label for="star3"><span class="text">普通</span>★</label>
+            <input id="star4" type="radio" name="star" value="2" />
+            <label for="star4"><span class="text">悪い</span>★</label>
+            <input id="star5" type="radio" name="star" value="1" />
+            <label for="star5"><span class="text">最悪</span>★</label>
+          </div>
         </div>
 
         <ons-button id="sendbutton">登録</ons-button>
-        
+
       </div>
-      
+
     </ons-page>
   </ons-template>
 
@@ -107,18 +112,18 @@
           <ons-toolbar-button icon="fa-home" id="topbutton"></ons-toolbar-button>
         </div>
         <div class="center">一覧</div>
-          <div class="right">
-            <ons-toolbar-button icon="fa-plus" id="registerbutton2"></ons-toolbar-button>
-          </div>
+        <div class="right">
+          <ons-toolbar-button icon="fa-plus" id="registerbutton2"></ons-toolbar-button>
+        </div>
       </ons-toolbar>
-      
+
       <!-- リスト -->
       <ons-list modifier="inset" class="lists">
       </ons-list>
 
     </ons-page>
   </ons-template>
-  
+
   <!-- 結果ページ -->
   <ons-template id="page4.html">
     <ons-page id="kind-page">
@@ -130,10 +135,10 @@
         </div>
       </ons-toolbar>
 
-      
+
       <div class="content">
         <h1>私の好みの</h1>
-        <div class="select">          
+        <div class="select">
           <ons-select>
             <option value="" hidden>選択してください</option>
             <option value="sake">日本酒</option>
@@ -142,7 +147,7 @@
             <option value="shochu">焼酎</option>
             <option value="fruitWine">果実酒</option>
             <option value="cocktail">カクテル</option>
-          </ons-select>  
+          </ons-select>
           <h1>は...</h1>
         </div>
 
@@ -162,7 +167,9 @@
     <ons-page id="detail-page">
       <!-- ヘッダー -->
       <ons-toolbar class="hedder">
-        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
         <div class="center" id="sakeName">お酒の名前</div>
         <div class="right">
           <ons-toolbar-button icon="fa-edit" id="editbutton"></ons-toolbar-button>
@@ -180,11 +187,12 @@
     <ons-page id="edit-page">
       <!-- ヘッダー -->
       <ons-toolbar class="hedder">
-        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
         <div class="center">お酒の編集</div>
       </ons-toolbar>
 
-        
       <div class="content">
         <!-- ジャンル選択 -->
         <div class="genre">
@@ -194,12 +202,10 @@
           </ons-select>
         </div>
 
-
-        
         <!-- 名前入力 -->
         <div class="name ">
         </div>
-        
+
         <!-- 変化するとこ -->
         <div id="change">
         </div>
@@ -215,14 +221,15 @@
             </div>
           </form>
         </div>
-
-        <ons-button id="sendbutton">登録</ons-button>
         
+        <ons-button id="sendbutton">登録</ons-button>
+
       </div>
-      
+
     </ons-page>
   </ons-template>
 
 
 </body>
+
 </html>
