@@ -3,6 +3,22 @@
 // Page init event
 document.addEventListener('init', function(event) {
   var page = event.target;
+
+  //topページ
+  if (page.matches('#top-page')) {    
+    // topから登録
+    page.querySelector('#registerbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page2.html');
+    };
+      // topから結果
+    page.querySelector('#kindbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page4.html');
+    };
+      // topから一覧
+    page.querySelector('#listbutton').onclick = function() {
+      document.querySelector('#navigator').pushPage('page3.html');
+    };
+  } 
   
   // 登録ページ
   if (page.matches('#register-page')) {
@@ -295,9 +311,7 @@ document.addEventListener('init', function(event) {
         var send = {};
         send.name = $('#name').val();
         send.ジャンル = $('#genre option:selected').val();
-        send.memo = $("#memo").val();
-        send.ster =  $('input:radio[name="star"]:checked').val();
-
+        
         if ($('#genre option:selected').val() == "日本酒") {
           send.種類 = $('#select_種類 option:selected').val();
           send.産地 = $('#select_産地 option:selected').val();
@@ -323,12 +337,14 @@ document.addEventListener('init', function(event) {
           send.果実 = $('#select_果実 option:selected').val();
           send.ベース = $('#select_ベース option:selected').val();       
         }
-        else if ($('#genre option:selected').val() == "赤ワイン") {
+        else if ($('#genre option:selected').val() == "カクテル") {
           send.種類 = $('#select_種類 option:selected').val();
           send.ベース = $('#select_ベース option:selected').val();
           send.割り材 = $('#select_割り材 option:selected').val();          
         }
-
+        send.memo = $("#memo").val();
+        send.ster =  $('input:radio[name="star"]:checked').val();
+        
         var number = localStorage.length + 1;        
         var data = JSON.stringify(send);
         localStorage.setItem('data'+number, data);                // データ1, データ2..
@@ -347,24 +363,24 @@ document.addEventListener('init', function(event) {
   // 一覧ページ
   if (page.matches('#list-page')) {
 
-      for (let index = 1; index < localStorage.length+1; index++) {
+    for (let index = 1; index < localStorage.length+1; index++) {
 
-        var dataIndex = 'data'+index;
-        var jsonData = localStorage.getItem(dataIndex);
-        var jsData = JSON.parse(jsonData);
-        
-        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + jsData.name + '</span>' + '<span class="list-item__subtitle">' + jsData.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
-        
-        $('.lists').append(list);
+      var dataIndex = 'data'+index;
+      var jsonData = localStorage.getItem(dataIndex);
+      var jsData = JSON.parse(jsonData);
+      
+      var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + jsData.name + '</span>' + '<span class="list-item__subtitle">' + jsData.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
+      
+      $('.lists').append(list);
 
-        // 一覧から詳細
-        page.querySelector('#sake' + index).onclick = function() {
-          document.querySelector('#navigator').pushPage('page5.html', {data: {number: index}});
-        };
-        
-        console.log(jsData);
-        
-      }
+      // 一覧から詳細
+      page.querySelector('#sake' + index).onclick = function() {
+        document.querySelector('#navigator').pushPage('page5.html', {data: {number: index}});
+      };
+      
+      console.log(jsData);
+      
+    }
     
 
     // 一覧から登録
@@ -377,71 +393,51 @@ document.addEventListener('init', function(event) {
       document.querySelector('#navigator').resetToPage('top.html');
     };
 
-  } 
-  
-  //topページ
-  if (page.matches('#top-page')) {    
-    // topから登録
-    page.querySelector('#registerbutton').onclick = function() {
-      document.querySelector('#navigator').pushPage('page2.html');
-    };
-      // topから結果
-    page.querySelector('#kindbutton').onclick = function() {
-      document.querySelector('#navigator').pushPage('page4.html');
-    };
-      // topから一覧
-    page.querySelector('#listbutton').onclick = function() {
-      document.querySelector('#navigator').pushPage('page3.html');
-    };
-  } 
+  }  
 
    // 詳細ページ
   if (page.matches('#detail-page')) {
+    // $.getJSON("json/data.json", function(json){               // JSON取得
     var number = page.data.number;
-    $.getJSON("json/data.json", function(json){               // JSON取得
-      var drink = json.data[number];
-      $('#sakeName').html(drink.name);
+    
+    var dataNumber = 'data'+number;
+    var jsonData = localStorage.getItem(dataNumber);
+    var jsData = JSON.parse(jsonData);
+      // var drink = json.data[number];
+      $('#sakeName').html(jsData.name);
 
-      var key = Object.keys(drink);
+      var key = Object.keys(jsData);
 
       for (let index = 1; index < key.length; index++) {
         
         if (key[index] == "memo") {
 
           var memo = '<div class="memos">' + '<p>メモ: </p>' + '<p class="note">' + 
-          drink.memo + '</p>' + '</div>';
+          jsData.memo + '</p>' + '</div>';
 
           $('#detail').append(memo);
 
         } else if (key[index] == "ster") {
 
-          var ster = '<div class="wrap">' + '<span class="rate rate' + drink.ster + '"></span>' + '</div>';
+          var ster = '<div class="wrap">' + '<span class="rate rate' + jsData.ster + '"></span>' + '</div>';
 
           $('#detail').append(ster);
 
         } else {
-          var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + drink[key[index]] + '</p>' + '</div>'
+          var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + jsData[key[index]] + '</p>' + '</div>'
           
           $('#detail').append(item);          
         }
 
       }
       
-    });
+    // });
     
     
 
     // 詳細から編集
     page.querySelector('#editbutton').onclick = function() {
       document.querySelector('#navigator').pushPage('page6.html', {data: {number: number}});
-    };
-  } 
-
-  // 結果ページ
-  if (page.matches('#kind-page')) {
-    // 結果からtop
-    page.querySelector('#topbutton').onclick = function() {
-      document.querySelector('#navigator').resetToPage('top.html');
     };
   } 
   
@@ -1210,7 +1206,13 @@ document.addEventListener('init', function(event) {
 
   } 
 
-
+  // 結果ページ
+  if (page.matches('#kind-page')) {
+    // 結果からtop
+    page.querySelector('#topbutton').onclick = function() {
+      document.querySelector('#navigator').resetToPage('top.html');
+    };
+  } 
 
 });
 
