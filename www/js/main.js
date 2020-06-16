@@ -401,11 +401,14 @@ document.addEventListener('init', function (event) {
     var jsonData = localStorage.getItem(dataNumber);
     var jsData = JSON.parse(jsonData);
 
+    console.log(jsData);                  // テスト用
+
+
     $('#sakeName').html(jsData.name);
 
     var key = Object.keys(jsData);
 
-    for (let index = 1; index < key.length; index++) {
+    for (let index = 0; index < key.length; index++) {
 
       if (key[index] == "memo") {
 
@@ -420,6 +423,8 @@ document.addEventListener('init', function (event) {
 
         $('#detail').append(ster);
 
+      } else if (key[index] == "name") {
+        continue;
       } else {
         var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + jsData[key[index]] + '</p>' + '</div>'
 
