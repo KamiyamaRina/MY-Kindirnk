@@ -141,14 +141,14 @@
     background: #fafafa;
   }
 
-  .sake {
+  .result {
     background: #fafafa;
     opacity: 0.8;
     width: 300px;
     margin: 60px 30px;
   }
 
-  .sake > p {
+  .result > p {
     text-align: left;
     padding-top: 10px;
     margin: 20px;
