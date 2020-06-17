@@ -8,8 +8,8 @@ document.addEventListener('init', function (event) {
   if (page.matches('#top-page')) {
 
     if (!window.localStorage) {
-    alert("お使いのブラウザはlocalstorageに対応してません。");
-}
+      alert("お使いのブラウザはlocalstorageに対応してません。");
+    }
 
     // topから登録
     page.querySelector('#registerbutton').onclick = function () {
@@ -41,7 +41,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -97,7 +97,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -189,7 +189,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -269,7 +269,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -479,7 +479,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -553,7 +553,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -669,7 +669,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -769,7 +769,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -858,7 +858,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -932,7 +932,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -1048,7 +1048,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -1148,7 +1148,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
             '</ons-select>' +
@@ -1275,7 +1275,7 @@ document.addEventListener('init', function (event) {
             '<p>酒米: </p>' +
             '<p>味: </p>'
           );
-          
+
           // ポイント集計
           var sakePoint = {
             ster1: {
@@ -1314,41 +1314,41 @@ document.addEventListener('init', function (event) {
             var dataIndex = 'data' + index;
             var jsonData = localStorage.getItem(dataIndex);
             var jsData = JSON.parse(jsonData);                  // localstrage取得
-            
+
             if (jsData.ジャンル == "日本酒") {
               $.each(json.genre.日本酒, function (item, value) {   // 項目1つずつ処理
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if(sakePoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    sakePoint.ster1[item][登録] ++;
+                  if (sakePoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    sakePoint.ster1[item][登録]++;
                   } else {                                      // [登録]がない場合
                     sakePoint.ster1[item][登録] = 1;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if(sakePoint.ster2[item][登録]) {
-                    sakePoint.ster2[item][登録] ++;
+                  if (sakePoint.ster2[item][登録]) {
+                    sakePoint.ster2[item][登録]++;
                   } else {
                     sakePoint.ster2[item][登録] = 1;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if(sakePoint.ster3[item][登録]) {
-                    sakePoint.ster3[item][登録] ++;
+                  if (sakePoint.ster3[item][登録]) {
+                    sakePoint.ster3[item][登録]++;
                   } else {
                     sakePoint.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if(sakePoint.ster4[item][登録]) {
-                    sakePoint.ster4[item][登録] ++;
+                  if (sakePoint.ster4[item][登録]) {
+                    sakePoint.ster4[item][登録]++;
                   } else {
                     sakePoint.ster4[item][登録] = 1;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if(sakePoint.ster5[item][登録]) {
-                    sakePoint.ster5[item][登録] ++;
+                  if (sakePoint.ster5[item][登録]) {
+                    sakePoint.ster5[item][登録]++;
                   } else {
                     sakePoint.ster5[item][登録] = 1;
                   }
-                }              
+                }
               });
             } else {
               continue;
@@ -1356,16 +1356,91 @@ document.addEventListener('init', function (event) {
           }
           // 確認用
           console.log(sakePoint);
-          
+
 
         }
         // 赤ワインの場合
         if (genre == "赤ワイン") {
           $('.result').html(     // html変更
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<p>産地: </p>' +
             '<p>ぶどう: </p>'
-          );        
+          );
+          // ポイント集計
+          var redWinePoint = {
+            ster1: {
+              種類: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster2: {
+              種類: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster3: {
+              種類: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster4: {
+              種類: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster5: {
+              種類: {},
+              産地: {},
+              ぶどう: {}
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+
+            if (jsData.ジャンル == "赤ワイン") {
+              $.each(json.genre.赤ワイン, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if (redWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    redWinePoint.ster1[item][登録]++;
+                  } else {                                      // [登録]がない場合
+                    redWinePoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if (redWinePoint.ster2[item][登録]) {
+                    redWinePoint.ster2[item][登録]++;
+                  } else {
+                    redWinePoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if (redWinePoint.ster3[item][登録]) {
+                    redWinePoint.ster3[item][登録]++;
+                  } else {
+                    redWinePoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if (redWinePoint.ster4[item][登録]) {
+                    redWinePoint.ster4[item][登録]++;
+                  } else {
+                    redWinePoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if (redWinePoint.ster5[item][登録]) {
+                    redWinePoint.ster5[item][登録]++;
+                  } else {
+                    redWinePoint.ster5[item][登録] = 1;
+                  }
+                }
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(redWinePoint);
         }
         // 白ワインの場合
         if (genre == "白ワイン") {
@@ -1373,33 +1448,328 @@ document.addEventListener('init', function (event) {
             '<p>味わい: </p>' +
             '<p>産地: </p>' +
             '<p>ぶどう: </p>'
-          );        
+          );
+          // ポイント集計
+          var whiteWinePoint = {
+            ster1: {
+              味わい: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster2: {
+              味わい: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster3: {
+              味わい: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster4: {
+              味わい: {},
+              産地: {},
+              ぶどう: {}
+            },
+            ster5: {
+              味わい: {},
+              産地: {},
+              ぶどう: {}
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+
+            if (jsData.ジャンル == "白ワイン") {
+              $.each(json.genre.白ワイン, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if (whiteWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    whiteWinePoint.ster1[item][登録]++;
+                  } else {                                      // [登録]がない場合
+                    whiteWinePoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if (whiteWinePoint.ster2[item][登録]) {
+                    whiteWinePoint.ster2[item][登録]++;
+                  } else {
+                    whiteWinePoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if (whiteWinePoint.ster3[item][登録]) {
+                    whiteWinePoint.ster3[item][登録]++;
+                  } else {
+                    whiteWinePoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if (whiteWinePoint.ster4[item][登録]) {
+                    whiteWinePoint.ster4[item][登録]++;
+                  } else {
+                    whiteWinePoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if (whiteWinePoint.ster5[item][登録]) {
+                    whiteWinePoint.ster5[item][登録]++;
+                  } else {
+                    whiteWinePoint.ster5[item][登録] = 1;
+                  }
+                }
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(whiteWinePoint);
         }
         // 焼酎の場合
         if (genre == "焼酎") {
           $('.result').html(     // html変更
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<p>原料: </p>' +
             '<p>産地: </p>'
-          );        
+          );
+          // ポイント集計
+          var shochuPoint = {
+            ster1: {
+              種類: {},
+              原料: {},
+              産地: {}
+            },
+            ster2: {
+              種類: {},
+              原料: {},
+              産地: {}
+            },
+            ster3: {
+              種類: {},
+              原料: {},
+              産地: {}
+            },
+            ster4: {
+              種類: {},
+              原料: {},
+              産地: {}
+            },
+            ster5: {
+              種類: {},
+              原料: {},
+              産地: {}
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+
+            if (jsData.ジャンル == "焼酎") {
+              $.each(json.genre.焼酎, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if (shochuPoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    shochuPoint.ster1[item][登録]++;
+                  } else {                                      // [登録]がない場合
+                    shochuPoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if (shochuPoint.ster2[item][登録]) {
+                    shochuPoint.ster2[item][登録]++;
+                  } else {
+                    shochuPoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if (shochuPoint.ster3[item][登録]) {
+                    shochuPoint.ster3[item][登録]++;
+                  } else {
+                    shochuPoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if (shochuPoint.ster4[item][登録]) {
+                    shochuPoint.ster4[item][登録]++;
+                  } else {
+                    shochuPoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if (shochuPoint.ster5[item][登録]) {
+                    shochuPoint.ster5[item][登録]++;
+                  } else {
+                    shochuPoint.ster5[item][登録] = 1;
+                  }
+                }
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(shochuPoint);
         }
         // 果実酒の場合
         if (genre == "果実酒") {
           $('.result').html(     // html変更
             '<p>果実: </p>' +
             '<p>ベース: </p>'
-          );        
+          );
+          // ポイント集計
+          var fuluitWinePoint = {
+            ster1: {
+              果実: {},
+              ベース: {},
+            },
+            ster2: {
+              果実: {},
+              ベース: {},
+            },
+            ster3: {
+              果実: {},
+              ベース: {},
+            },
+            ster4: {
+              果実: {},
+              ベース: {},
+            },
+            ster5: {
+              果実: {},
+              ベース: {},
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+
+            if (jsData.ジャンル == "果実酒") {
+              $.each(json.genre.果実酒, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if (fuluitWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    fuluitWinePoint.ster1[item][登録]++;
+                  } else {                                      // [登録]がない場合
+                    fuluitWinePoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if (fuluitWinePoint.ster2[item][登録]) {
+                    fuluitWinePoint.ster2[item][登録]++;
+                  } else {
+                    fuluitWinePoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if (fuluitWinePoint.ster3[item][登録]) {
+                    fuluitWinePoint.ster3[item][登録]++;
+                  } else {
+                    fuluitWinePoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if (fuluitWinePoint.ster4[item][登録]) {
+                    fuluitWinePoint.ster4[item][登録]++;
+                  } else {
+                    fuluitWinePoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if (fuluitWinePoint.ster5[item][登録]) {
+                    fuluitWinePoint.ster5[item][登録]++;
+                  } else {
+                    fuluitWinePoint.ster5[item][登録] = 1;
+                  }
+                }
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(fuluitWinePoint);
         }
         // カクテルの場合
         if (genre == "カクテル") {
           $('.result').html(     // html変更
-            '<p>分類: </p>' +
+            '<p>種類: </p>' +
             '<p>ベース: </p>' +
             '<p>割り材: </p>'
-          );        
+          );
+          // ポイント集計
+          var CocktailPoint = {
+            ster1: {
+              種類: {},
+              ベース: {},
+              割り材: {}
+            },
+            ster2: {
+              種類: {},
+              ベース: {},
+              割り材: {}
+            },
+            ster3: {
+              種類: {},
+              ベース: {},
+              割り材: {}
+            },
+            ster4: {
+              種類: {},
+              ベース: {},
+              割り材: {}
+            },
+            ster5: {
+              種類: {},
+              ベース: {},
+              割り材: {}
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+
+            if (jsData.ジャンル == "カクテル") {
+              $.each(json.genre.カクテル, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if (CocktailPoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    CocktailPoint.ster1[item][登録]++;
+                  } else {                                      // [登録]がない場合
+                    CocktailPoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if (CocktailPoint.ster2[item][登録]) {
+                    CocktailPoint.ster2[item][登録]++;
+                  } else {
+                    CocktailPoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if (CocktailPoint.ster3[item][登録]) {
+                    CocktailPoint.ster3[item][登録]++;
+                  } else {
+                    CocktailPoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if (CocktailPoint.ster4[item][登録]) {
+                    CocktailPoint.ster4[item][登録]++;
+                  } else {
+                    CocktailPoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if (CocktailPoint.ster5[item][登録]) {
+                    CocktailPoint.ster5[item][登録]++;
+                  } else {
+                    CocktailPoint.ster5[item][登録] = 1;
+                  }
+                }
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(CocktailPoint);
         }
 
-        
+
       });
     });
     // 結果からtop
