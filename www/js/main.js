@@ -6,6 +6,11 @@ document.addEventListener('init', function (event) {
 
   //topページ
   if (page.matches('#top-page')) {
+
+    if (!window.localStorage) {
+    alert("お使いのブラウザはlocalstorageに対応してません。");
+}
+
     // topから登録
     page.querySelector('#registerbutton').onclick = function () {
       document.querySelector('#navigator').pushPage('page2.html');
@@ -1253,60 +1258,150 @@ document.addEventListener('init', function (event) {
 
   // 結果ページ
   if (page.matches('#kind-page')) {
+    $.getJSON("json/data.json", function (json) {               // JSON取得
 
-    $("#genre").change(function () {                    // ジャンルを選択した時
-      var genre = $(this).val();                        // genreに選択ジャンルの値代入
+      $("#genre").change(function () {                    // ジャンルを選択した時
+        var genre = $(this).val();                        // genreに選択ジャンルの値代入
 
-      // 日本酒の場合
-      if (genre == "日本酒") {
-        $('.result').html(     // html変更
-          '<p>分類: </p>' +
-          '<p>産地: </p>' +
-          '<p>酒米: </p>' +
-          '<p>味: </p>'
-        );        
-      }
-      // 赤ワインの場合
-      if (genre == "赤ワイン") {
-        $('.result').html(     // html変更
-          '<p>分類: </p>' +
-          '<p>産地: </p>' +
-          '<p>ぶどう: </p>'
-        );        
-      }
-      // 白ワインの場合
-      if (genre == "白ワイン") {
-        $('.result').html(     // html変更
-          '<p>味わい: </p>' +
-          '<p>産地: </p>' +
-          '<p>ぶどう: </p>'
-        );        
-      }
-      // 焼酎の場合
-      if (genre == "焼酎") {
-        $('.result').html(     // html変更
-          '<p>分類: </p>' +
-          '<p>原料: </p>' +
-          '<p>産地: </p>'
-        );        
-      }
-      // 果実酒の場合
-      if (genre == "果実酒") {
-        $('.result').html(     // html変更
-          '<p>果実: </p>' +
-          '<p>ベース: </p>'
-        );        
-      }
-      // カクテルの場合
-      if (genre == "カクテル") {
-        $('.result').html(     // html変更
-          '<p>分類: </p>' +
-          '<p>ベース: </p>' +
-          '<p>割り材: </p>'
-        );        
-      }
+        var dataNumber = 'data' + number;
+        var jsonData = localStorage.getItem(dataNumber);
+        var jsData = JSON.parse(jsonData);                      // localstrageデータ取得
+
+        // 日本酒の場合
+        if (genre == "日本酒") {
+          $('.result').html(     // html変更
+            '<p>種類: </p>' +
+            '<p>産地: </p>' +
+            '<p>酒米: </p>' +
+            '<p>味: </p>'
+          );
+          
+          // ポイント集計
+          var sakePoint = {
+            ster1: {
+              種類: {},
+              産地: {},
+              酒米: {},
+              味: {}
+            },
+            ster2: {
+              種類: {},
+              産地: {},
+              酒米: {},
+              味: {}
+            },
+            ster3: {
+              種類: {},
+              産地: {},
+              酒米: {},
+              味: {}
+            },
+            ster4: {
+              種類: {},
+              産地: {},
+              酒米: {},
+              味: {}
+            },
+            ster5: {
+              種類: {},
+              産地: {},
+              酒米: {},
+              味: {}
+            },
+          }
+          for (let index = 1; index < localStorage.length + 1; index++) {
+
+            var dataIndex = 'data' + index;
+            var jsonData = localStorage.getItem(dataIndex);
+            var jsData = JSON.parse(jsonData);                  // localstrage取得
+            
+            if (jsData.ジャンル == "日本酒") {
+              $.each(json.genre.日本酒, function (item, value) {   // 項目1つずつ処理
+                var 登録 = jsData[item];                        // 各項目登録データ
+                if (jsData.ster == 1) {                         // ster1
+                  if(sakePoint.ster1[item][登録]) {             // [登録]がすでにある場合
+                    sakePoint.ster1[item][登録] ++;
+                  } else {                                      // [登録]がない場合
+                    sakePoint.ster1[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 2) {                  // ster2
+                  if(sakePoint.ster2[item][登録]) {
+                    sakePoint.ster2[item][登録] ++;
+                  } else {
+                    sakePoint.ster2[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 3) {                  // ster3
+                  if(sakePoint.ster3[item][登録]) {
+                    sakePoint.ster3[item][登録] ++;
+                  } else {
+                    sakePoint.ster3[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 4) {                  // ster4
+                  if(sakePoint.ster4[item][登録]) {
+                    sakePoint.ster4[item][登録] ++;
+                  } else {
+                    sakePoint.ster4[item][登録] = 1;
+                  }
+                } else if (jsData.ster == 5) {                  // ster5
+                  if(sakePoint.ster5[item][登録]) {
+                    sakePoint.ster5[item][登録] ++;
+                  } else {
+                    sakePoint.ster5[item][登録] = 1;
+                  }
+                }              
+              });
+            } else {
+              continue;
+            }
+          }
+          // 確認用
+          console.log(sakePoint);
+          
+
+        }
+        // 赤ワインの場合
+        if (genre == "赤ワイン") {
+          $('.result').html(     // html変更
+            '<p>分類: </p>' +
+            '<p>産地: </p>' +
+            '<p>ぶどう: </p>'
+          );        
+        }
+        // 白ワインの場合
+        if (genre == "白ワイン") {
+          $('.result').html(     // html変更
+            '<p>味わい: </p>' +
+            '<p>産地: </p>' +
+            '<p>ぶどう: </p>'
+          );        
+        }
+        // 焼酎の場合
+        if (genre == "焼酎") {
+          $('.result').html(     // html変更
+            '<p>分類: </p>' +
+            '<p>原料: </p>' +
+            '<p>産地: </p>'
+          );        
+        }
+        // 果実酒の場合
+        if (genre == "果実酒") {
+          $('.result').html(     // html変更
+            '<p>果実: </p>' +
+            '<p>ベース: </p>'
+          );        
+        }
+        // カクテルの場合
+        if (genre == "カクテル") {
+          $('.result').html(     // html変更
+            '<p>分類: </p>' +
+            '<p>ベース: </p>' +
+            '<p>割り材: </p>'
+          );        
+        }
+
+        
+      });
     });
-
     // 結果からtop
     page.querySelector('#topbutton').onclick = function () {
       document.querySelector('#navigator').resetToPage('top.html');
