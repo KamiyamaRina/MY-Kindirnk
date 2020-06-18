@@ -1263,10 +1263,6 @@ document.addEventListener('init', function (event) {
       $("#genre").change(function () {                    // ジャンルを選択した時
         var genre = $(this).val();                        // genreに選択ジャンルの値代入
 
-        var dataNumber = 'data' + number;
-        var jsonData = localStorage.getItem(dataNumber);
-        var jsData = JSON.parse(jsonData);                      // localstrageデータ取得
-
         // 日本酒の場合
         if (genre == "日本酒") {
 
@@ -1348,7 +1344,6 @@ document.addEventListener('init', function (event) {
                 continue;
               }
             }
-            
           });
           console.log(sakeAggr);      // 集計チェック用
 
@@ -1389,10 +1384,6 @@ document.addEventListener('init', function (event) {
               if (max <= val) {                
                 max = val;
                 maxKey = key;
-
-                console.log(val);
-                console.log(key);
-                
               }
             });
             kindOf[item] = maxKey;
@@ -1408,18 +1399,12 @@ document.addEventListener('init', function (event) {
             '<p>酒米:  ' + kindOf.酒米 + '</p>'+
             '<p>味:  ' + kindOf.味 + '</p>'
           );
-
-
         }
+        
         // 赤ワインの場合
         if (genre == "赤ワイン") {
-          $('.result').html(     // html変更
-            '<p>種類: </p>' +
-            '<p>産地: </p>' +
-            '<p>ぶどう: </p>'
-          );
           // ポイント集計
-          var redWinePoint = {
+          var redWineAggr = {
             ster1: {
               種類: {},
               産地: {},
@@ -1446,146 +1431,236 @@ document.addEventListener('init', function (event) {
               ぶどう: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.赤ワイン, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "赤ワイン") {
-              $.each(json.genre.赤ワイン, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "赤ワイン") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (redWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    redWinePoint.ster1[item][登録]++;
+                  if (redWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    redWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    redWinePoint.ster1[item][登録] = 1;
+                    redWineAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (redWinePoint.ster2[item][登録]) {
-                    redWinePoint.ster2[item][登録]++;
+                  if (redWineAggr.ster2[item][登録]) {
+                    redWineAggr.ster2[item][登録] += 0.75;
                   } else {
-                    redWinePoint.ster2[item][登録] = 1;
+                    redWineAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (redWinePoint.ster3[item][登録]) {
-                    redWinePoint.ster3[item][登録]++;
+                  if (redWineAggr.ster3[item][登録]) {
+                    redWineAggr.ster3[item][登録]++;
                   } else {
-                    redWinePoint.ster3[item][登録] = 1;
+                    redWineAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (redWinePoint.ster4[item][登録]) {
-                    redWinePoint.ster4[item][登録]++;
+                  if (redWineAggr.ster4[item][登録]) {
+                    redWineAggr.ster4[item][登録] += 1.25;
                   } else {
-                    redWinePoint.ster4[item][登録] = 1;
+                    redWineAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (redWinePoint.ster5[item][登録]) {
-                    redWinePoint.ster5[item][登録]++;
+                  if (redWineAggr.ster5[item][登録]) {
+                    redWineAggr.ster5[item][登録] += 1.5;
                   } else {
-                    redWinePoint.ster5[item][登録] = 1;
+                    redWineAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
+          });
+          console.log(redWineAggr);      // 集計チェック用
+
+          // 合計値算出
+          var redWinePoint = {
+            種類:{},
+            産地:{},
+            ぶどう:{}
           }
-          // 確認用
-          console.log(redWinePoint);
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = redWineAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (redWinePoint[item][key]) {
+                  redWinePoint[item][key] += val;
+                } else {
+                  redWinePoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(redWinePoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            種類: "",
+            産地: "",
+            ぶどう: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(redWinePoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
+          });
+          console.log(kindOf);            // 判定チェック用    
+
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>種類:  ' + kindOf.種類 + '</p>'+
+            '<p>産地:  ' + kindOf.産地 + '</p>'+
+            '<p>ぶどう:  ' + kindOf.ぶどう + '</p>'
+          );
         }
         // 白ワインの場合
         if (genre == "白ワイン") {
-          $('.result').html(     // html変更
-            '<p>味わい: </p>' +
-            '<p>産地: </p>' +
-            '<p>ぶどう: </p>'
-          );
           // ポイント集計
-          var whiteWinePoint = {
+          var whiteWineAggr = {
             ster1: {
-              味わい: {},
+              味: {},
               産地: {},
               ぶどう: {}
             },
             ster2: {
-              味わい: {},
+              味: {},
               産地: {},
               ぶどう: {}
             },
             ster3: {
-              味わい: {},
+              味: {},
               産地: {},
               ぶどう: {}
             },
             ster4: {
-              味わい: {},
+              味: {},
               産地: {},
               ぶどう: {}
             },
             ster5: {
-              味わい: {},
+              味: {},
               産地: {},
               ぶどう: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.白ワイン, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "白ワイン") {
-              $.each(json.genre.白ワイン, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "白ワイン") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (whiteWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    whiteWinePoint.ster1[item][登録]++;
+                  if (whiteWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    whiteWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    whiteWinePoint.ster1[item][登録] = 1;
+                    whiteWineAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (whiteWinePoint.ster2[item][登録]) {
-                    whiteWinePoint.ster2[item][登録]++;
+                  if (whiteWineAggr.ster2[item][登録]) {
+                    whiteWineAggr.ster2[item][登録] += 0.75;
                   } else {
-                    whiteWinePoint.ster2[item][登録] = 1;
+                    whiteWineAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (whiteWinePoint.ster3[item][登録]) {
-                    whiteWinePoint.ster3[item][登録]++;
+                  if (whiteWineAggr.ster3[item][登録]) {
+                    whiteWineAggr.ster3[item][登録]++;
                   } else {
-                    whiteWinePoint.ster3[item][登録] = 1;
+                    whiteWineAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (whiteWinePoint.ster4[item][登録]) {
-                    whiteWinePoint.ster4[item][登録]++;
+                  if (whiteWineAggr.ster4[item][登録]) {
+                    whiteWineAggr.ster4[item][登録] += 1.25;
                   } else {
-                    whiteWinePoint.ster4[item][登録] = 1;
+                    whiteWineAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (whiteWinePoint.ster5[item][登録]) {
-                    whiteWinePoint.ster5[item][登録]++;
+                  if (whiteWineAggr.ster5[item][登録]) {
+                    whiteWineAggr.ster5[item][登録] += 1.5;
                   } else {
-                    whiteWinePoint.ster5[item][登録] = 1;
+                    whiteWineAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
+          });
+          console.log(whiteWineAggr);      // 集計チェック用
+
+          // 合計値算出
+          var whiteWinePoint = {
+            味:{},
+            産地:{},
+            ぶどう:{}
           }
-          // 確認用
-          console.log(whiteWinePoint);
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = whiteWineAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (whiteWinePoint[item][key]) {
+                  whiteWinePoint[item][key] += val;
+                } else {
+                  whiteWinePoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(whiteWinePoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            味: "",
+            産地: "",
+            ぶどう: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(whiteWinePoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
+          });
+          console.log(kindOf);            // 判定チェック用    
+
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>味:  ' + kindOf.味 + '</p>'+
+            '<p>産地:  ' + kindOf.産地 + '</p>'+
+            '<p>ぶどう:  ' + kindOf.ぶどう + '</p>'
+          );
         }
         // 焼酎の場合
         if (genre == "焼酎") {
-          $('.result').html(     // html変更
-            '<p>種類: </p>' +
-            '<p>原料: </p>' +
-            '<p>産地: </p>'
-          );
           // ポイント集計
-          var shochuPoint = {
+          var shochuAggr = {
             ster1: {
               種類: {},
               原料: {},
@@ -1612,140 +1687,228 @@ document.addEventListener('init', function (event) {
               産地: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.焼酎, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "焼酎") {
-              $.each(json.genre.焼酎, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "焼酎") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (shochuPoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    shochuPoint.ster1[item][登録]++;
+                  if (shochuAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    shochuAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    shochuPoint.ster1[item][登録] = 1;
+                    shochuAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (shochuPoint.ster2[item][登録]) {
-                    shochuPoint.ster2[item][登録]++;
+                  if (shochuAggr.ster2[item][登録]) {
+                    shochuAggr.ster2[item][登録] += 0.75;
                   } else {
-                    shochuPoint.ster2[item][登録] = 1;
+                    shochuAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (shochuPoint.ster3[item][登録]) {
-                    shochuPoint.ster3[item][登録]++;
+                  if (shochuAggr.ster3[item][登録]) {
+                    shochuAggr.ster3[item][登録]++;
                   } else {
-                    shochuPoint.ster3[item][登録] = 1;
+                    shochuAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (shochuPoint.ster4[item][登録]) {
-                    shochuPoint.ster4[item][登録]++;
+                  if (shochuAggr.ster4[item][登録]) {
+                    shochuAggr.ster4[item][登録] += 1.25;
                   } else {
-                    shochuPoint.ster4[item][登録] = 1;
+                    shochuAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (shochuPoint.ster5[item][登録]) {
-                    shochuPoint.ster5[item][登録]++;
+                  if (shochuAggr.ster5[item][登録]) {
+                    shochuAggr.ster5[item][登録] += 1.5;
                   } else {
-                    shochuPoint.ster5[item][登録] = 1;
+                    shochuAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
+          });
+          console.log(shochuAggr);      // 集計チェック用
+
+          // 合計値算出
+          var shochuPoint = {
+            種類:{},
+            原料:{},
+            産地:{}
           }
-          // 確認用
-          console.log(shochuPoint);
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = shochuAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (shochuPoint[item][key]) {
+                  shochuPoint[item][key] += val;
+                } else {
+                  shochuPoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(shochuPoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            種類: "",
+            原料: "",
+            産地: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(shochuPoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
+          });
+          console.log(kindOf);            // 判定チェック用    
+
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>種類:  ' + kindOf.種類 + '</p>'+
+            '<p>原料:  ' + kindOf.原料 + '</p>'+
+            '<p>産地:  ' + kindOf.産地 + '</p>'
+          );
         }
         // 果実酒の場合
         if (genre == "果実酒") {
-          $('.result').html(     // html変更
-            '<p>果実: </p>' +
-            '<p>ベース: </p>'
-          );
           // ポイント集計
-          var fuluitWinePoint = {
+          var fruitWineAggr = {
             ster1: {
               果実: {},
-              ベース: {},
+              ベース: {}
             },
             ster2: {
               果実: {},
-              ベース: {},
+              ベース: {}
             },
             ster3: {
               果実: {},
-              ベース: {},
+              ベース: {}
             },
             ster4: {
               果実: {},
-              ベース: {},
+              ベース: {}
             },
             ster5: {
               果実: {},
-              ベース: {},
+              ベース: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.果実酒, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "果実酒") {
-              $.each(json.genre.果実酒, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "果実酒") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (fuluitWinePoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    fuluitWinePoint.ster1[item][登録]++;
+                  if (fruitWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    fruitWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    fuluitWinePoint.ster1[item][登録] = 1;
+                    fruitWineAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (fuluitWinePoint.ster2[item][登録]) {
-                    fuluitWinePoint.ster2[item][登録]++;
+                  if (fruitWineAggr.ster2[item][登録]) {
+                    fruitWineAggr.ster2[item][登録] += 0.75;
                   } else {
-                    fuluitWinePoint.ster2[item][登録] = 1;
+                    fruitWineAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (fuluitWinePoint.ster3[item][登録]) {
-                    fuluitWinePoint.ster3[item][登録]++;
+                  if (fruitWineAggr.ster3[item][登録]) {
+                    fruitWineAggr.ster3[item][登録]++;
                   } else {
-                    fuluitWinePoint.ster3[item][登録] = 1;
+                    fruitWineAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (fuluitWinePoint.ster4[item][登録]) {
-                    fuluitWinePoint.ster4[item][登録]++;
+                  if (fruitWineAggr.ster4[item][登録]) {
+                    fruitWineAggr.ster4[item][登録] += 1.25;
                   } else {
-                    fuluitWinePoint.ster4[item][登録] = 1;
+                    fruitWineAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (fuluitWinePoint.ster5[item][登録]) {
-                    fuluitWinePoint.ster5[item][登録]++;
+                  if (fruitWineAggr.ster5[item][登録]) {
+                    fruitWineAggr.ster5[item][登録] += 1.5;
                   } else {
-                    fuluitWinePoint.ster5[item][登録] = 1;
+                    fruitWineAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
+          });
+          console.log(fruitWineAggr);      // 集計チェック用
+
+          // 合計値算出
+          var fruitWinePoint = {
+            果実:{},
+            ベース:{}
           }
-          // 確認用
-          console.log(fuluitWinePoint);
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = fruitWineAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (fruitWinePoint[item][key]) {
+                  fruitWinePoint[item][key] += val;
+                } else {
+                  fruitWinePoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(fruitWinePoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            果実: "",
+            ベース: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(fruitWinePoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
+          });
+          console.log(kindOf);            // 判定チェック用    
+
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>果実:  ' + kindOf.果実 + '</p>'+
+            '<p>ベース:  ' + kindOf.ベース + '</p>'
+          );
         }
         // カクテルの場合
         if (genre == "カクテル") {
-          $('.result').html(     // html変更
-            '<p>種類: </p>' +
-            '<p>ベース: </p>' +
-            '<p>割り材: </p>'
-          );
           // ポイント集計
-          var CocktailPoint = {
+          var cocktailAggr = {
             ster1: {
               種類: {},
               ベース: {},
@@ -1772,56 +1935,104 @@ document.addEventListener('init', function (event) {
               割り材: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.カクテル, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "カクテル") {
-              $.each(json.genre.カクテル, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "カクテル") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (CocktailPoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    CocktailPoint.ster1[item][登録]++;
+                  if (cocktailAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    cocktailAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    CocktailPoint.ster1[item][登録] = 1;
+                    cocktailAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (CocktailPoint.ster2[item][登録]) {
-                    CocktailPoint.ster2[item][登録]++;
+                  if (cocktailAggr.ster2[item][登録]) {
+                    cocktailAggr.ster2[item][登録] += 0.75;
                   } else {
-                    CocktailPoint.ster2[item][登録] = 1;
+                    cocktailAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (CocktailPoint.ster3[item][登録]) {
-                    CocktailPoint.ster3[item][登録]++;
+                  if (cocktailAggr.ster3[item][登録]) {
+                    cocktailAggr.ster3[item][登録]++;
                   } else {
-                    CocktailPoint.ster3[item][登録] = 1;
+                    cocktailAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (CocktailPoint.ster4[item][登録]) {
-                    CocktailPoint.ster4[item][登録]++;
+                  if (cocktailAggr.ster4[item][登録]) {
+                    cocktailAggr.ster4[item][登録] += 1.25;
                   } else {
-                    CocktailPoint.ster4[item][登録] = 1;
+                    cocktailAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (CocktailPoint.ster5[item][登録]) {
-                    CocktailPoint.ster5[item][登録]++;
+                  if (cocktailAggr.ster5[item][登録]) {
+                    cocktailAggr.ster5[item][登録] += 1.5;
                   } else {
-                    CocktailPoint.ster5[item][登録] = 1;
+                    cocktailAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
+          });
+          console.log(cocktailAggr);      // 集計チェック用
+
+          // 合計値算出
+          var cocktailPoint = {
+            種類:{},
+            ベース:{},
+            割り材:{}
           }
-          // 確認用
-          console.log(CocktailPoint);
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = cocktailAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (cocktailPoint[item][key]) {
+                  cocktailPoint[item][key] += val;
+                } else {
+                  cocktailPoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(cocktailPoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            種類: "",
+            ベース: "",
+            割り材: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(cocktailPoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
+          });
+          console.log(kindOf);            // 判定チェック用    
+
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>種類:  ' + kindOf.種類 + '</p>'+
+            '<p>ベース:  ' + kindOf.ベース + '</p>'+
+            '<p>割り材:  ' + kindOf.割り材 + '</p>'
+          );
         }
-
-
       });
     });
     // 結果からtop
