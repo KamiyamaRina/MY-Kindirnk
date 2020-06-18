@@ -1277,7 +1277,7 @@ document.addEventListener('init', function (event) {
           );
 
           // ポイント集計
-          var sakePoint = {
+          var sakeAggr = {
             ster1: {
               種類: {},
               産地: {},
@@ -1309,53 +1309,58 @@ document.addEventListener('init', function (event) {
               味: {}
             },
           }
-          for (let index = 1; index < localStorage.length + 1; index++) {
+          $.each(json.genre.日本酒, function (item, value) {   // 項目1つずつ処理
+            
+            for (let index = 1; index < localStorage.length + 1; index++) {
 
-            var dataIndex = 'data' + index;
-            var jsonData = localStorage.getItem(dataIndex);
-            var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var dataIndex = 'data' + index;
+              var jsonData = localStorage.getItem(dataIndex);
+              var jsData = JSON.parse(jsonData);                  // localstrage取得
 
-            if (jsData.ジャンル == "日本酒") {
-              $.each(json.genre.日本酒, function (item, value) {   // 項目1つずつ処理
+              if (jsData.ジャンル == "日本酒") {
                 var 登録 = jsData[item];                        // 各項目登録データ
                 if (jsData.ster == 1) {                         // ster1
-                  if (sakePoint.ster1[item][登録]) {             // [登録]がすでにある場合
-                    sakePoint.ster1[item][登録]++;
+                  if (sakeAggr.ster1[item][登録]) {             // [登録]がすでにある場合
+                    sakeAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
-                    sakePoint.ster1[item][登録] = 1;
+                    sakeAggr.ster1[item][登録] = 0.5;
                   }
                 } else if (jsData.ster == 2) {                  // ster2
-                  if (sakePoint.ster2[item][登録]) {
-                    sakePoint.ster2[item][登録]++;
+                  if (sakeAggr.ster2[item][登録]) {
+                    sakeAggr.ster2[item][登録] += 0.75;
                   } else {
-                    sakePoint.ster2[item][登録] = 1;
+                    sakeAggr.ster2[item][登録] = 0.75;
                   }
                 } else if (jsData.ster == 3) {                  // ster3
-                  if (sakePoint.ster3[item][登録]) {
-                    sakePoint.ster3[item][登録]++;
+                  if (sakeAggr.ster3[item][登録]) {
+                    sakeAggr.ster3[item][登録]++;
                   } else {
-                    sakePoint.ster3[item][登録] = 1;
+                    sakeAggr.ster3[item][登録] = 1;
                   }
                 } else if (jsData.ster == 4) {                  // ster4
-                  if (sakePoint.ster4[item][登録]) {
-                    sakePoint.ster4[item][登録]++;
+                  if (sakeAggr.ster4[item][登録]) {
+                    sakeAggr.ster4[item][登録] += 1.25;
                   } else {
-                    sakePoint.ster4[item][登録] = 1;
+                    sakeAggr.ster4[item][登録] = 1.25;
                   }
                 } else if (jsData.ster == 5) {                  // ster5
-                  if (sakePoint.ster5[item][登録]) {
-                    sakePoint.ster5[item][登録]++;
+                  if (sakeAggr.ster5[item][登録]) {
+                    sakeAggr.ster5[item][登録] += 1.5;
                   } else {
-                    sakePoint.ster5[item][登録] = 1;
+                    sakeAggr.ster5[item][登録] = 1.5;
                   }
                 }
-              });
-            } else {
-              continue;
+              } else {
+                continue;
+              }
             }
-          }
-          // 確認用
-          console.log(sakePoint);
+            
+          });
+          console.log(sakeAggr);
+
+          
+          
+
 
 
         }
