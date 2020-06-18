@@ -1269,12 +1269,6 @@ document.addEventListener('init', function (event) {
 
         // 日本酒の場合
         if (genre == "日本酒") {
-          $('.result').html(     // html変更
-            '<p>種類: </p>' +
-            '<p>産地: </p>' +
-            '<p>酒米: </p>' +
-            '<p>味: </p>'
-          );
 
           // ポイント集計
           var sakeAggr = {
@@ -1390,18 +1384,30 @@ document.addEventListener('init', function (event) {
           var max = 0;                  // 合計比較用
           var maxKey = "";              // 最大値のkeyいれるとこ
           $.each(sakePoint, function (item, value) {   // itemは項目valueは選択肢たち
-            $.each(value, function (key, val) {   // keyは選択肢valは合計数
+            $.each(value, function (key, val) {   // keyは選択肢valは合計値
+              max = 0;
               if (max <= val) {                
                 max = val;
                 maxKey = key;
+
+                console.log(val);
+                console.log(key);
+                
               }
             });
             kindOf[item] = maxKey;
+            console.log("item:" + item);
+            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用
-          
-          
+          console.log(kindOf);            // 判定チェック用    
 
+          // 結果表示
+          $('.result').html(     // html変更
+            '<p>種類:  ' + kindOf.種類 + '</p>'+
+            '<p>産地:  ' + kindOf.産地 + '</p>'+
+            '<p>酒米:  ' + kindOf.酒米 + '</p>'+
+            '<p>味:  ' + kindOf.味 + '</p>'
+          );
 
 
         }
