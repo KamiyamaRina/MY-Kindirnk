@@ -1356,8 +1356,49 @@ document.addEventListener('init', function (event) {
             }
             
           });
-          console.log(sakeAggr);
+          console.log(sakeAggr);      // 集計チェック用
 
+          // 合計値算出
+          var sakePoint = {
+            種類:{},
+            産地:{},
+            酒米:{},
+            味:{}
+          }
+          
+          for (let sterNum = 1; sterNum < 6; sterNum++) {
+            var sterItem = sakeAggr["ster" + sterNum];
+            $.each(sterItem, function (item, value) {   // itemは項目valueは選択肢たち
+              $.each(value, function (key, val) {   // keyは選択肢valは集計数
+                if (sakePoint[item][key]) {
+                  sakePoint[item][key] += val;
+                } else {
+                  sakePoint[item][key] = val;
+                }
+              });
+            });
+          }
+          console.log(sakePoint);        // 合計チェック用
+          
+          // 判定
+          var kindOf = {                // 結果を入れるとこ
+            種類: "",
+            産地: "",
+            酒米: "",
+            味: ""
+          }
+          var max = 0;                  // 合計比較用
+          var maxKey = "";              // 最大値のkeyいれるとこ
+          $.each(sakePoint, function (item, value) {   // itemは項目valueは選択肢たち
+            $.each(value, function (key, val) {   // keyは選択肢valは合計数
+              if (max <= val) {                
+                max = val;
+                maxKey = key;
+              }
+            });
+            kindOf[item] = maxKey;
+          });
+          console.log(kindOf);            // 判定チェック用
           
           
 
