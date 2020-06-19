@@ -386,6 +386,24 @@ document.addEventListener('init', function (event) {
 
     }
 
+    // ローカルストレージ全消去
+    page.querySelector('#alldeletebutton').onclick = function () {
+      // 確認ダイヤログ表示
+      ons.notification.confirm({
+        title: '登録データの全消去',
+        message: 'すべての登録データを消去してもよろしいですか？',
+        buttonLabels: ['No', 'Yes'],
+        animation: 'default',
+        cancelable: true,
+        callback: function(index) {
+          if(index == 1) {                      // yesのとき全消去
+            localStorage.clear();
+            document.querySelector('#navigator').replacePage('page3.html');
+          }
+        }
+    })
+    };
+
     // 一覧から登録
     page.querySelector('#registerbutton2').onclick = function () {
       document.querySelector('#navigator').pushPage('page2.html');
@@ -435,7 +453,25 @@ document.addEventListener('init', function (event) {
 
     }
 
+    $('#detail').append('<ons-button icon="md-delete" id="deletebutton"></ons-button>');
 
+    // 登録データ消去
+    page.querySelector('#deletebutton').onclick = function () {
+      // 確認ダイヤログ表示
+      ons.notification.confirm({
+        title: '登録データの消去',
+        message: jsData.name + 'の登録データを消去してもよろしいですか？',
+        buttonLabels: ['No', 'Yes'],
+        animation: 'default',
+        cancelable: true,
+        callback: function(index) {
+          if(index == 1) {                      // yesのとき全消去
+            localStorage.removeItem(dataNumber);
+            document.querySelector('#navigator').replacePage('page3.html');
+          }
+        }
+    })
+    };
 
     // 詳細から編集
     page.querySelector('#editbutton').onclick = function () {
