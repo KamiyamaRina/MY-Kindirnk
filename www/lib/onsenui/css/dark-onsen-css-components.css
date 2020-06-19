@@ -4974,7 +4974,7 @@ h4, h5, h6 {
   border-radius: 4px;
   background-color: #0d0d0d;
   -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC');
-  color: #7B8D93;
+  color: #47595f;
 }
 .dialog-mask {
   padding: 0;
@@ -5076,7 +5076,7 @@ h4, h5, h6 {
   border-radius: 8px;
   overflow: visible;
   max-width: 95%;
-  color: #7B8D93;
+  color: #47595f;
 }
 .alert-dialog-container {
   height: inherit;
@@ -5092,7 +5092,7 @@ h4, h5, h6 {
   font-weight: 500;
   padding: 0 8px;
   text-align: center;
-  color: #7B8D93;
+  color: #47595f;
 }
 .alert-dialog-content {
   box-sizing: border-box;
@@ -5101,7 +5101,7 @@ h4, h5, h6 {
   font-size: 14px;
   min-height: 36px;
   text-align: center;
-  color: #7B8D93;
+  color: #47595f;
 }
 .alert-dialog-footer {
   width: 100%;
