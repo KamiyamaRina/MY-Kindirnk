@@ -162,7 +162,7 @@
     background: #fafafa;
     opacity: 0.8;
     width: 300px;
-    margin: 60px 30px;
+    margin: auto;
   }
 
   #result > p {
@@ -180,7 +180,7 @@
     font-size: 16px;
     letter-spacing: 2px;
     width: 180px;
-    margin-top: 30px;
+    margin: auto;
   }
 
 /* 詳細ページ */

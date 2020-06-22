@@ -379,20 +379,22 @@ document.addEventListener('init', function (event) {
   if (page.matches('#list-page')) {
     var jsonData = localStorage.getItem('itemList');
     var jsData = JSON.parse(jsonData);
-    
-    for (let index = 0; index < jsData.length; index++) {
-
-      var items = jsData[index];
-
-      var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + items.name + '</span>' + '<span class="list-item__subtitle">' + items.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
-
-      $('.lists').append(list);
-
-      // 一覧から詳細
-      page.querySelector('#sake' + index).onclick = function () {
-        document.querySelector('#navigator').pushPage('page5.html', { data: { number: index } });
-      };
-
+    if (jsData) {
+      for (let index = 0; index < jsData.length; index++) {
+  
+        var items = jsData[index];
+  
+        var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + items.name + '</span>' + '<span class="list-item__subtitle">' + items.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
+  
+        $('.lists').append(list);
+  
+        // 一覧から詳細
+        page.querySelector('#sake' + index).onclick = function () {
+          document.querySelector('#navigator').pushPage('page5.html', { data: { number: index } });
+        };
+  
+      }
+      
     }
 
     // ローカルストレージ全消去
@@ -474,7 +476,7 @@ document.addEventListener('init', function (event) {
     page.querySelector('#deletebutton').onclick = function () {
       // 確認ダイヤログ表示
       ons.notification.confirm({
-        title: '登録データの消去',
+        title: items.name + 'の消去',
         message: items.name + 'を消去してもよろしいですか？',
         buttonLabels: ['No', 'Yes'],
         animation: 'default',
@@ -1317,7 +1319,7 @@ document.addEventListener('init', function (event) {
         var genre = $(this).val();                        // genreに選択ジャンルの値代入
 
         // tweet表示
-        $(".tweetbtn").css('display', 'inline-block');
+        $(".tweetbtn").css('display', 'block');
         var tweetText = "";
 
         // 日本酒の場合
