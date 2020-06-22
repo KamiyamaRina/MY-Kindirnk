@@ -496,17 +496,15 @@ document.addEventListener('init', function (event) {
     $.getJSON("json/data.json", function (json) {               // JSON取得
       var number = page.data.number;
 
-      var dataNumber = 'data' + number;
-      var jsonData = localStorage.getItem(dataNumber);
+      var jsonData = localStorage.getItem('itemList');
       var jsData = JSON.parse(jsonData);
-
-      // var drink = json.data[number];
+      var items = jsData[number];
 
       // ジャンル
       var genreKey = Object.keys(json.genre);
 
       genreKey.forEach(function (data) {                       //ジャンル選択追加
-        if (data == jsData.ジャンル) {                         // ジャンルが登録と同じの時
+        if (data == items.ジャンル) {                         // ジャンルが登録と同じの時
           var genres = '<option value="' + data + '" selected>' + data + '</option>';
         } else {
           var genres = '<option value="' + data + '">' + data + '</option>';
@@ -517,7 +515,7 @@ document.addEventListener('init', function (event) {
 
       var target = $('#genre option:selected').val();         // 選択されている値
 
-      if (target == jsData.ジャンル) {                        // 選択ジャンルの時        
+      if (target == items.ジャンル) {                        // 選択ジャンルの時        
         // 名前、メモ、星表示
         $(".name, .memo, .ster").css('display', 'block');
 
@@ -559,7 +557,7 @@ document.addEventListener('init', function (event) {
           // selectの選択肢変化
           $.each(json.genre.日本酒.種類, function (index, value) {
 
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -569,7 +567,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.japan, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -578,7 +576,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.日本酒.酒米, function (index, value) {
-            if (value == jsData.酒米) {
+            if (value == items.酒米) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -587,7 +585,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.日本酒.味, function (index, value) {
-            if (value == jsData.味) {
+            if (value == items.味) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -625,7 +623,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.赤ワイン.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -634,7 +632,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.wine, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -643,7 +641,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.赤ワイン.ぶどう, function (index, value) {
-            if (value == jsData.ぶどう) {
+            if (value == items.ぶどう) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -683,7 +681,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.白ワイン.味, function (index, value) {
-            if (value == jsData.味) {
+            if (value == items.味) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -692,7 +690,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.wine, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -701,7 +699,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.白ワイン.ぶどう, function (index, value) {
-            if (value == jsData.ぶどう) {
+            if (value == items.ぶどう) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -741,7 +739,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.焼酎.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -750,7 +748,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.焼酎.原料, function (index, value) {
-            if (value == jsData.原料) {
+            if (value == items.原料) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -759,7 +757,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.japan, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -792,7 +790,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.果実酒.果実, function (index, value) {
-            if (value == jsData.果実) {
+            if (value == items.果実) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -801,7 +799,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.果実酒.ベース, function (index, value) {
-            if (value == jsData.ベース) {
+            if (value == items.ベース) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -841,7 +839,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.カクテル.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -850,7 +848,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.カクテル.ベース, function (index, value) {
-            if (value == jsData.ベース) {
+            if (value == items.ベース) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -859,7 +857,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.カクテル.割り材, function (index, value) {
-            if (value == jsData.割り材) {
+            if (value == items.割り材) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -870,10 +868,10 @@ document.addEventListener('init', function (event) {
 
         // 名前,メモの初期値設定
         $('.name').html(     // html変更
-          '<ons-input type="text" placeholder="お酒の名前" modifier="underbar" id="name" value=' + jsData.name + '></ons-input>'
+          '<ons-input type="text" placeholder="お酒の名前" modifier="underbar" id="name" value=' + items.name + '></ons-input>'
         );
         $('.memo').html(     // html変更
-          '<textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ">' + jsData.memo + '</textarea>'
+          '<textarea name="textarea" id="memo" cols="40" rows="5" placeholder="メモ">' + items.memo + '</textarea>'
         );
 
         // 星設定
@@ -881,7 +879,7 @@ document.addEventListener('init', function (event) {
 
           var sterValue = 6 - index;
 
-          if (sterValue == jsData.ster) {
+          if (sterValue == items.ster) {
             var ster = '<input id="star' + index + '" type="radio" name="star" value="' + sterValue + '" checked/>' + '<label for="star' + index + '"><span class="text">' + json.val[index - 1] + '</span>★</label>';
 
           } else {
@@ -938,7 +936,7 @@ document.addEventListener('init', function (event) {
           // selectの選択肢変化
           $.each(json.genre.日本酒.種類, function (index, value) {
 
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -948,7 +946,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.japan, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -957,7 +955,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.日本酒.酒米, function (index, value) {
-            if (value == jsData.酒米) {
+            if (value == items.酒米) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + value + '">' + value + '</option>'
@@ -966,7 +964,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.日本酒.味, function (index, value) {
-            if (value == jsData.味) {
+            if (value == items.味) {
               var option = '<option value="' + value + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1004,7 +1002,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.赤ワイン.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1013,7 +1011,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.wine, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1022,7 +1020,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.赤ワイン.ぶどう, function (index, value) {
-            if (value == jsData.ぶどう) {
+            if (value == items.ぶどう) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1062,7 +1060,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.白ワイン.味, function (index, value) {
-            if (value == jsData.味) {
+            if (value == items.味) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1071,7 +1069,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.wine, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1080,7 +1078,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.白ワイン.ぶどう, function (index, value) {
-            if (value == jsData.ぶどう) {
+            if (value == items.ぶどう) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1120,7 +1118,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.焼酎.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1129,7 +1127,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.焼酎.原料, function (index, value) {
-            if (value == jsData.原料) {
+            if (value == items.原料) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1138,7 +1136,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.place.japan, function (index, value) {
-            if (value == jsData.産地) {
+            if (value == items.産地) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1171,7 +1169,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.果実酒.果実, function (index, value) {
-            if (value == jsData.果実) {
+            if (value == items.果実) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1180,7 +1178,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.果実酒.ベース, function (index, value) {
-            if (value == jsData.ベース) {
+            if (value == items.ベース) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1220,7 +1218,7 @@ document.addEventListener('init', function (event) {
 
           // selectの選択肢変化
           $.each(json.genre.カクテル.種類, function (index, value) {
-            if (value == jsData.種類) {
+            if (value == items.種類) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1229,7 +1227,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.カクテル.ベース, function (index, value) {
-            if (value == jsData.ベース) {
+            if (value == items.ベース) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1238,7 +1236,7 @@ document.addEventListener('init', function (event) {
           });
 
           $.each(json.genre.カクテル.割り材, function (index, value) {
-            if (value == jsData.割り材) {
+            if (value == items.割り材) {
               var option = '<option value="' + index + '" selected>' + value + '</option>'
             } else {
               var option = '<option value="' + index + '">' + value + '</option>'
@@ -1289,8 +1287,9 @@ document.addEventListener('init', function (event) {
         send.memo = $("#memo").val();
         send.ster = $('input:radio[name="star"]:checked').val();
 
-        var data = JSON.stringify(send);
-        localStorage.setItem('data' + number, data);                // データ1, データ2..
+        jsData[number] = (send);
+        jsData = JSON.stringify(jsData);
+        localStorage.setItem('itemList', jsData);
 
       });
 
