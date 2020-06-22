@@ -441,8 +441,14 @@ document.addEventListener('init', function (event) {
 
       if (key[index] == "memo") {
 
+        // 改行コードを<br>に変換
+          var nl2br = function (str) {
+            return str.replace(/\n/g, '<br>');
+          }
+          var itemMemo = nl2br(items.memo);
+
         var memo = '<div class="memos">' + '<p>メモ: </p>' + '<p class="note">' +
-          items.memo + '</p>' + '</div>';
+        itemMemo + '</p>' + '</div>'; 
 
         $('#detail').append(memo);
 
@@ -1392,7 +1398,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(sakeAggr);      // 集計チェック用
 
           // 合計値算出
           var sakePoint = {
@@ -1414,7 +1419,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(sakePoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -1434,10 +1438,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
@@ -1524,7 +1525,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(redWineAggr);      // 集計チェック用
 
           // 合計値算出
           var redWinePoint = {
@@ -1545,7 +1545,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(redWinePoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -1564,10 +1563,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
@@ -1652,7 +1648,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(whiteWineAggr);      // 集計チェック用
 
           // 合計値算出
           var whiteWinePoint = {
@@ -1673,7 +1668,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(whiteWinePoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -1692,10 +1686,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
@@ -1780,7 +1771,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(shochuAggr);      // 集計チェック用
 
           // 合計値算出
           var shochuPoint = {
@@ -1801,7 +1791,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(shochuPoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -1820,10 +1809,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
@@ -1903,7 +1889,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(fruitWineAggr);      // 集計チェック用
 
           // 合計値算出
           var fruitWinePoint = {
@@ -1923,7 +1908,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(fruitWinePoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -1941,10 +1925,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
@@ -2028,7 +2009,6 @@ document.addEventListener('init', function (event) {
               }
             }
           });
-          console.log(cocktailAggr);      // 集計チェック用
 
           // 合計値算出
           var cocktailPoint = {
@@ -2049,7 +2029,6 @@ document.addEventListener('init', function (event) {
               });
             });
           }
-          console.log(cocktailPoint);        // 合計チェック用
           
           // 判定
           var kindOf = {                // 結果を入れるとこ
@@ -2068,10 +2047,7 @@ document.addEventListener('init', function (event) {
               }
             });
             kindOf[item] = maxKey;
-            console.log("item:" + item);
-            console.log("key:" + key);
           });
-          console.log(kindOf);            // 判定チェック用    
 
           // 結果表示
           $('.result').html(     // html変更
