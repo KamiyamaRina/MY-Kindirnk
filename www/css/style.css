@@ -70,6 +70,7 @@
 
   .name,  .memo, .ster {
     margin: 20px 0;
+    display: none;
   }
 
   #memo {
@@ -115,10 +116,6 @@
     margin-bottom: 20px;
     letter-spacing: 2px; 
   }
-.name, .memo, .ster {
-  display: none;
-}
-
 
 /* 一覧ページ */
   .lists {
@@ -161,14 +158,14 @@
     background: #fafafa;
   }
 
-  .result {
+  #result {
     background: #fafafa;
     opacity: 0.8;
     width: 300px;
     margin: 60px 30px;
   }
 
-  .result > p {
+  #result > p {
     text-align: left;
     padding-top: 10px;
     margin: 20px;
@@ -176,6 +173,15 @@
     font-weight: bold;
   }
 
+  .tweetbtn {
+    display: none;
+    background-color: #1b95e0;
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    width: 180px;
+    margin-top: 30px;
+  }
 
 /* 詳細ページ */
   #detail-page > .content {

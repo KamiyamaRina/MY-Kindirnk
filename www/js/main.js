@@ -475,7 +475,7 @@ document.addEventListener('init', function (event) {
       // 確認ダイヤログ表示
       ons.notification.confirm({
         title: '登録データの消去',
-        message: items.name + 'の登録データを消去してもよろしいですか？',
+        message: items.name + 'を消去してもよろしいですか？',
         buttonLabels: ['No', 'Yes'],
         animation: 'default',
         cancelable: true,
@@ -1316,6 +1316,10 @@ document.addEventListener('init', function (event) {
       $("#genre").change(function () {                    // ジャンルを選択した時
         var genre = $(this).val();                        // genreに選択ジャンルの値代入
 
+        // tweet表示
+        $(".tweetbtn").css('display', 'inline-block');
+        var tweetText = "";
+
         // 日本酒の場合
         if (genre == "日本酒") {
 
@@ -1441,16 +1445,17 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>種類:  ' + kindOf.種類 + '</p>'+
             '<p>産地:  ' + kindOf.産地 + '</p>'+
             '<p>酒米:  ' + kindOf.酒米 + '</p>'+
             '<p>味:  ' + kindOf.味 + '</p>'
           );
-        }
-        
+
+          tweetText = "私の好みの" + genre + "は、%0a種類:" + kindOf.種類 + "%0a産地:" + kindOf.産地 + "%0a酒米:" + kindOf.酒米 + "%0a味:" + kindOf.味 + "%0aです！%0a";
+        }        
         // 赤ワインの場合
-        if (genre == "赤ワイン") {
+        else if (genre == "赤ワイン") {
           // ポイント集計
           var redWineAggr = {
             ster1: {
@@ -1566,14 +1571,16 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>種類:  ' + kindOf.種類 + '</p>'+
             '<p>産地:  ' + kindOf.産地 + '</p>'+
             '<p>ぶどう:  ' + kindOf.ぶどう + '</p>'
           );
+
+          tweetText = "私の好みの" + genre + "は、%0a種類:" + kindOf.種類 + "%0a産地:" + kindOf.産地 + "%0aぶどう:" + kindOf.ぶどう + "%0aです！%0a"
         }
         // 白ワインの場合
-        if (genre == "白ワイン") {
+        else if (genre == "白ワイン") {
           // ポイント集計
           var whiteWineAggr = {
             ster1: {
@@ -1618,7 +1625,7 @@ document.addEventListener('init', function (event) {
                   } else {                                      // [登録]がない場合
                     whiteWineAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (itemsster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (whiteWineAggr.ster2[item][登録]) {
                     whiteWineAggr.ster2[item][登録] += 0.75;
                   } else {
@@ -1689,14 +1696,16 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>味:  ' + kindOf.味 + '</p>'+
             '<p>産地:  ' + kindOf.産地 + '</p>'+
             '<p>ぶどう:  ' + kindOf.ぶどう + '</p>'
           );
+
+          tweetText = "私の好みの" + genre + "は、%0a味:" + kindOf.味 + "%0a産地:" + kindOf.産地 + "%0aぶどう:" + kindOf.ぶどう + "%0aです！%0a"
         }
         // 焼酎の場合
-        if (genre == "焼酎") {
+        else if (genre == "焼酎") {
           // ポイント集計
           var shochuAggr = {
             ster1: {
@@ -1812,14 +1821,16 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>種類:  ' + kindOf.種類 + '</p>'+
             '<p>原料:  ' + kindOf.原料 + '</p>'+
             '<p>産地:  ' + kindOf.産地 + '</p>'
           );
+
+          tweetText = "私の好みの" + genre + "は、%0a種類:" + kindOf.種類 + "%0a原料:" + kindOf.原料 + "%0a産地:" + kindOf.産地 + "%0aです！%0a"
         }
         // 果実酒の場合
-        if (genre == "果実酒") {
+        else if (genre == "果実酒") {
           // ポイント集計
           var fruitWineAggr = {
             ster1: {
@@ -1928,13 +1939,15 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>果実:  ' + kindOf.果実 + '</p>'+
             '<p>ベース:  ' + kindOf.ベース + '</p>'
           );
+
+          tweetText = "私の好みの" + genre + "は、%0a果実:" + kindOf.果実 + "%0aベース:" + kindOf.ベース + "%0aです！%0a"
         }
         // カクテルの場合
-        if (genre == "カクテル") {
+        else if (genre == "カクテル") {
           // ポイント集計
           var cocktailAggr = {
             ster1: {
@@ -2050,14 +2063,23 @@ document.addEventListener('init', function (event) {
           });
 
           // 結果表示
-          $('.result').html(     // html変更
+          $('#result').html(     // html変更
             '<p>種類:  ' + kindOf.種類 + '</p>'+
             '<p>ベース:  ' + kindOf.ベース + '</p>'+
             '<p>割り材:  ' + kindOf.割り材 + '</p>'
           );
+
+          tweetText = "私の好みの" + genre + "は、%0a種類:" + kindOf.種類 + "%0aベース:" + kindOf.ベース + "%0a割り材:" + kindOf.割り材 + "%0aです！%0a"
         }
+        
+        //ツイートボタンの処理
+        $('#twitter_button').click(function() {
+          window.open().location.href = ("https://twitter.com/share?url=%23mykindrink&text=" + tweetText + "&count=none&lang=ja");
+        });
+        
       });
     });
+    
     // 結果からtop
     page.querySelector('#topbutton').onclick = function () {
       document.querySelector('#navigator').resetToPage('top.html');
