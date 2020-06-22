@@ -310,8 +310,16 @@ document.addEventListener('init', function (event) {
 
       });
 
+      var itemList = [];
+ 
+      var jsonData = localStorage.getItem('itemList'); 
+      var jsData = JSON.parse(jsonData);
+      if (jsData) {
+        itemList = jsData;
+      }
       // 登録
       $('#sendbutton').click(function () {
+        
 
         var send = {};
         send.name = $('#name').val();
@@ -350,9 +358,10 @@ document.addEventListener('init', function (event) {
         send.memo = $("#memo").val();
         send.ster = $('input:radio[name="star"]:checked').val();
 
-        var turn = localStorage.length + 1;
-        var data = JSON.stringify(send);
-        localStorage.setItem('data' + turn, data);                // データ1, データ2..
+
+        itemList.push(send);
+        itemList = JSON.stringify(itemList);
+        localStorage.setItem('itemList', itemList);
 
       });
 
@@ -368,14 +377,14 @@ document.addEventListener('init', function (event) {
 
   // 一覧ページ
   if (page.matches('#list-page')) {
+    var jsonData = localStorage.getItem('itemList');
+    var jsData = JSON.parse(jsonData);
+    
+    for (let index = 0; index < jsData.length; index++) {
 
-    for (let index = 1; index < localStorage.length + 1; index++) {
+      var items = jsData[index];
 
-      var dataIndex = 'data' + index;
-      var jsonData = localStorage.getItem(dataIndex);
-      var jsData = JSON.parse(jsonData);
-
-      var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + jsData.name + '</span>' + '<span class="list-item__subtitle">' + jsData.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
+      var list = '<ons-list-item id="sake' + index + '" odifier="longdivider" tappable>' + '<div class="center">' + '<span class="list-item__title">' + items.name + '</span>' + '<span class="list-item__subtitle">' + items.ジャンル + '</span>' + '</div>' + '</ons-list-item>'
 
       $('.lists').append(list);
 
