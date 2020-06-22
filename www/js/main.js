@@ -429,33 +429,33 @@ document.addEventListener('init', function (event) {
   if (page.matches('#detail-page')) {
     var number = page.data.number;
 
-    var dataNumber = 'data' + number;
-    var jsonData = localStorage.getItem(dataNumber);
+    var jsonData = localStorage.getItem('itemList');
     var jsData = JSON.parse(jsonData);
+    var items = jsData[number];
 
-    $('#sakeName').html(jsData.name);
+    $('#sakeName').html(items.name);
 
-    var key = Object.keys(jsData);
+    var key = Object.keys(items);
 
     for (let index = 0; index < key.length; index++) {        // 登録データ表示
 
       if (key[index] == "memo") {
 
         var memo = '<div class="memos">' + '<p>メモ: </p>' + '<p class="note">' +
-          jsData.memo + '</p>' + '</div>';
+          items.memo + '</p>' + '</div>';
 
         $('#detail').append(memo);
 
       } else if (key[index] == "ster") {
 
-        var ster = '<div class="wrap">' + '<span class="rate rate' + jsData.ster + '"></span>' + '</div>';
+        var ster = '<div class="wrap">' + '<span class="rate rate' + items.ster + '"></span>' + '</div>';
 
         $('#detail').append(ster);
 
       } else if (key[index] == "name") {
         continue;
       } else {
-        var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + jsData[key[index]] + '</p>' + '</div>'
+        var item = '<div class="item">' + '<p>' + key[index] + ':  </p>' + '<p>' + items[key[index]] + '</p>' + '</div>'
 
         $('#detail').append(item);
       }
@@ -469,13 +469,16 @@ document.addEventListener('init', function (event) {
       // 確認ダイヤログ表示
       ons.notification.confirm({
         title: '登録データの消去',
-        message: jsData.name + 'の登録データを消去してもよろしいですか？',
+        message: items.name + 'の登録データを消去してもよろしいですか？',
         buttonLabels: ['No', 'Yes'],
         animation: 'default',
         cancelable: true,
         callback: function(index) {
           if(index == 1) {                      // yesのとき全消去
-            localStorage.removeItem(dataNumber);
+            jsData.splice(number, 1);                    // itemListからnumber番目のデータ削除
+            jsData = JSON.stringify(jsData);             // jsDataをjson形式に
+            localStorage.setItem('itemList', jsData);    // jsDataをlocalstrageに
+
             document.querySelector('#navigator').replacePage('page3.html');
           }
         }
