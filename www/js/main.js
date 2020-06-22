@@ -1347,40 +1347,40 @@ document.addEventListener('init', function (event) {
             },
           }
           $.each(json.genre.日本酒, function (item, value) {   // 項目1つずつ処理
-            
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
+              
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+              var items = jsData[index];
 
-              if (jsData.ジャンル == "日本酒") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "日本酒") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (sakeAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     sakeAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     sakeAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (sakeAggr.ster2[item][登録]) {
                     sakeAggr.ster2[item][登録] += 0.75;
                   } else {
                     sakeAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (sakeAggr.ster3[item][登録]) {
                     sakeAggr.ster3[item][登録]++;
                   } else {
                     sakeAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (sakeAggr.ster4[item][登録]) {
                     sakeAggr.ster4[item][登録] += 1.25;
                   } else {
                     sakeAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (sakeAggr.ster5[item][登録]) {
                     sakeAggr.ster5[item][登録] += 1.5;
                   } else {
@@ -1480,39 +1480,39 @@ document.addEventListener('init', function (event) {
           }
           $.each(json.genre.赤ワイン, function (item, value) {   // 項目1つずつ処理
             
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+             var items = jsData[index];
 
-              if (jsData.ジャンル == "赤ワイン") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "赤ワイン") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (redWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     redWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     redWineAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (redWineAggr.ster2[item][登録]) {
                     redWineAggr.ster2[item][登録] += 0.75;
                   } else {
                     redWineAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (redWineAggr.ster3[item][登録]) {
                     redWineAggr.ster3[item][登録]++;
                   } else {
                     redWineAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (redWineAggr.ster4[item][登録]) {
                     redWineAggr.ster4[item][登録] += 1.25;
                   } else {
                     redWineAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (redWineAggr.ster5[item][登録]) {
                     redWineAggr.ster5[item][登録] += 1.5;
                   } else {
@@ -1608,39 +1608,39 @@ document.addEventListener('init', function (event) {
           }
           $.each(json.genre.白ワイン, function (item, value) {   // 項目1つずつ処理
             
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+             var items = jsData[index];
 
-              if (jsData.ジャンル == "白ワイン") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "白ワイン") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (whiteWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     whiteWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     whiteWineAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (itemsster == 2) {                  // ster2
                   if (whiteWineAggr.ster2[item][登録]) {
                     whiteWineAggr.ster2[item][登録] += 0.75;
                   } else {
                     whiteWineAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (whiteWineAggr.ster3[item][登録]) {
                     whiteWineAggr.ster3[item][登録]++;
                   } else {
                     whiteWineAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (whiteWineAggr.ster4[item][登録]) {
                     whiteWineAggr.ster4[item][登録] += 1.25;
                   } else {
                     whiteWineAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (whiteWineAggr.ster5[item][登録]) {
                     whiteWineAggr.ster5[item][登録] += 1.5;
                   } else {
@@ -1736,39 +1736,39 @@ document.addEventListener('init', function (event) {
           }
           $.each(json.genre.焼酎, function (item, value) {   // 項目1つずつ処理
             
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+             var items = jsData[index];
 
-              if (jsData.ジャンル == "焼酎") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "焼酎") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (shochuAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     shochuAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     shochuAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (shochuAggr.ster2[item][登録]) {
                     shochuAggr.ster2[item][登録] += 0.75;
                   } else {
                     shochuAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (shochuAggr.ster3[item][登録]) {
                     shochuAggr.ster3[item][登録]++;
                   } else {
                     shochuAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (shochuAggr.ster4[item][登録]) {
                     shochuAggr.ster4[item][登録] += 1.25;
                   } else {
                     shochuAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (shochuAggr.ster5[item][登録]) {
                     shochuAggr.ster5[item][登録] += 1.5;
                   } else {
@@ -1859,39 +1859,39 @@ document.addEventListener('init', function (event) {
           }
           $.each(json.genre.果実酒, function (item, value) {   // 項目1つずつ処理
             
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+             var items = jsData[index];
 
-              if (jsData.ジャンル == "果実酒") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "果実酒") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (fruitWineAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     fruitWineAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     fruitWineAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (fruitWineAggr.ster2[item][登録]) {
                     fruitWineAggr.ster2[item][登録] += 0.75;
                   } else {
                     fruitWineAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (fruitWineAggr.ster3[item][登録]) {
                     fruitWineAggr.ster3[item][登録]++;
                   } else {
                     fruitWineAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (fruitWineAggr.ster4[item][登録]) {
                     fruitWineAggr.ster4[item][登録] += 1.25;
                   } else {
                     fruitWineAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (fruitWineAggr.ster5[item][登録]) {
                     fruitWineAggr.ster5[item][登録] += 1.5;
                   } else {
@@ -1984,39 +1984,39 @@ document.addEventListener('init', function (event) {
           }
           $.each(json.genre.カクテル, function (item, value) {   // 項目1つずつ処理
             
-            for (let index = 1; index < localStorage.length + 1; index++) {
+            var jsonData = localStorage.getItem('itemList');
+            var jsData = JSON.parse(jsonData);
+            for (let index = 0; index < jsData.length; index++) {
 
-              var dataIndex = 'data' + index;
-              var jsonData = localStorage.getItem(dataIndex);
-              var jsData = JSON.parse(jsonData);                  // localstrage取得
+             var items = jsData[index];
 
-              if (jsData.ジャンル == "カクテル") {
-                var 登録 = jsData[item];                        // 各項目登録データ
-                if (jsData.ster == 1) {                         // ster1
+              if (items.ジャンル == "カクテル") {
+                var 登録 = items[item];                        // 各項目登録データ
+                if (items.ster == 1) {                         // ster1
                   if (cocktailAggr.ster1[item][登録]) {             // [登録]がすでにある場合
                     cocktailAggr.ster1[item][登録] += 0.5;
                   } else {                                      // [登録]がない場合
                     cocktailAggr.ster1[item][登録] = 0.5;
                   }
-                } else if (jsData.ster == 2) {                  // ster2
+                } else if (items.ster == 2) {                  // ster2
                   if (cocktailAggr.ster2[item][登録]) {
                     cocktailAggr.ster2[item][登録] += 0.75;
                   } else {
                     cocktailAggr.ster2[item][登録] = 0.75;
                   }
-                } else if (jsData.ster == 3) {                  // ster3
+                } else if (items.ster == 3) {                  // ster3
                   if (cocktailAggr.ster3[item][登録]) {
                     cocktailAggr.ster3[item][登録]++;
                   } else {
                     cocktailAggr.ster3[item][登録] = 1;
                   }
-                } else if (jsData.ster == 4) {                  // ster4
+                } else if (items.ster == 4) {                  // ster4
                   if (cocktailAggr.ster4[item][登録]) {
                     cocktailAggr.ster4[item][登録] += 1.25;
                   } else {
                     cocktailAggr.ster4[item][登録] = 1.25;
                   }
-                } else if (jsData.ster == 5) {                  // ster5
+                } else if (items.ster == 5) {                  // ster5
                   if (cocktailAggr.ster5[item][登録]) {
                     cocktailAggr.ster5[item][登録] += 1.5;
                   } else {
