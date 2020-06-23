@@ -1313,6 +1313,9 @@ document.addEventListener('init', function (event) {
 
   // 結果ページ
   if (page.matches('#kind-page')) {
+    
+    var tweetText = "";
+    
     $.getJSON("json/data.json", function (json) {               // JSON取得
 
       $("#genre").change(function () {                    // ジャンルを選択した時
@@ -1320,7 +1323,6 @@ document.addEventListener('init', function (event) {
 
         // tweet表示
         $(".tweetbtn").css('display', 'block');
-        var tweetText = "";
 
         // 日本酒の場合
         if (genre == "日本酒") {
@@ -2075,11 +2077,12 @@ document.addEventListener('init', function (event) {
         }
         
         //ツイートボタンの処理
-        $('#twitter_button').click(function() {
-          window.open().location.href = ("https://twitter.com/share?url=%23mykindrink&text=" + tweetText + "&count=none&lang=ja");
-        });
         
       });
+    });
+    $('#twitter_button').click(function() {
+      var url = "https://twitter.com/share?url=%23mykindrink&text=" + tweetText + "&count=none&lang=ja";
+      window.open(url, '_blank');
     });
     
     // 結果からtop
