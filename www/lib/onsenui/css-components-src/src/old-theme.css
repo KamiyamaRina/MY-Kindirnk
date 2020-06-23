@@ -2,7 +2,7 @@
 :root {
   /* variables for iOS components */
   --background-color: #f9f9f9;
-  --text-color: #47595f;
+  --text-color: #343558;
   --sub-text-color: #999;
   --highlight-color: rgba(24, 103, 194, 0.81);
   --second-highlight-color: #25a6d9;
@@ -11,7 +11,7 @@
   --button-cta-background-color: var(--second-highlight-color);
   --toolbar-background-color: #fafafa;
   --toolbar-button-color: rgba(38, 100, 171, 0.81);
-  --toolbar-text-color: #47595f;
+  --toolbar-text-color: #343558;
   --toolbar-border-color: #bbb;
   --button-bar-color: rgba(18, 114, 224, 0.77);
   --button-bar-active-text-color: #fafafa;
@@ -43,13 +43,13 @@
   --modal-background-color: rgba(0, 0, 0, 0.7);
   --modal-text-color: #fafafa;
   --alert-dialog-background-color: #f4f4f4;
-  --alert-dialog-text-color: #47595f;
+  --alert-dialog-text-color: #343558;
   --alert-dialog-button-color: rgba(24, 103, 194, 0.81);
   --alert-dialog-separator-color: #ddd;
   --dialog-background-color: #f4f4f4;
   --dialog-text-color: var(--text-color);
   --popover-background-color: white;
-  --popover-text-color: #47595f;
+  --popover-text-color: #343558;
   --action-sheet-title-color: #8f8e94;
   --action-sheet-button-separator-color: rgba(0, 0, 0, 0.1);
   --action-sheet-button-color: var(--highlight-color);
