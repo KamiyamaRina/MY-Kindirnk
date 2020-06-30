@@ -27,6 +27,7 @@ document.addEventListener('init', function (event) {
 
   // 登録ページ
   if (page.matches('#register-page')) {
+
     $.getJSON("json/data.json", function (json) {               // JSON取得
 
       $("#genre").change(function () {                         // ジャンルを選択した時
@@ -41,6 +42,7 @@ document.addEventListener('init', function (event) {
           $('#change').html(     // html変更
 
             '<div class="topic">' +
+            '<ons-button icon="fa-lightbulb" id="dealog" data-id="1"></ons-button>' +
             '<p>種類: </p>' +
             '<ons-select id="select_種類">' +
             '<option value="" hidden>選択してください</option>' +
@@ -48,6 +50,7 @@ document.addEventListener('init', function (event) {
             '</div>' +
 
             '<div class="topic">' +
+            '<ons-button icon="fa-lightbulb" id="dealog" data-id="2"></ons-button>' +
             '<p>産地: </p>' +
             '<ons-select id="select_産地">' +
             '<option value="" hidden>選択してください</option>' +
@@ -62,6 +65,7 @@ document.addEventListener('init', function (event) {
             '</div>' +
 
             '<div class="topic">' +
+            '<ons-button icon="fa-lightbulb" id="dealog" data-id="3"></ons-button>' +
             '<p>味: </p>' +
             '<ons-select id="select_味">' +
             '<option value="" hidden>選択してください</option>' +
@@ -89,6 +93,48 @@ document.addEventListener('init', function (event) {
           $.each(json.genre.日本酒.味, function (index, value) {
             var option = '<option value="' + value + '">' + value + '</option>'
             $('#select_味 > .select-input').append(option);
+          });
+
+          // ダイヤログ
+          $(document).on("click","#dealog", function() {
+            var click =  $(this).data('id');
+            
+            if (click == 1) {
+              $('#changeTrivia').html(     // html変更
+              '<h1>日本酒の種類</h1>' +
+              '<img src="images/sake-table.png">' +
+              '<p>日本酒は主に<br>・醸造アルコールが入っているか<br>・お米を何％磨いているか<br>のポイントで分けられています。</p>' +
+              '<ons-button id="link">詳しくはこちら(外部サイト)</ons-button>'
+              );
+              $('#link').click(function(){
+                window.open('https://www.kuramotokai.com/howtojizake/tsukuri', '_blank');
+              });  
+            } else if (click == 2) {
+              $('#changeTrivia').html(     // html変更
+                '<h1>産地ごとの特色</h1>' +
+                '<img src="images/sake-map.png">' +
+                '<p>日本酒はその土地の米と水を原料としているため、<br>地域によって味に特徴が異なります。<br>大きく見て寒い地域は辛口、<br>暖かい地域は甘口の日本酒が多くなります。</p>' +
+                '<ons-button id="link">詳しくはこちら(外部サイト)</ons-button>'
+              );
+              $('#link').click(function(){
+                window.open('https://www.kuramotokai.com/howtojizake/area', '_blank');
+              });
+            } else if (click == 3) {
+              $('#changeTrivia').html(     // html変更
+                '<h1>日本酒の味</h1>' +
+                '<img src="images/sake_taste.png">' +
+                '<p>“甘口・辛口”と言う表現は、<br>日本酒度と酸度の数値によって分けられています。</p>' +
+                '<ons-button id="link">詳しくはこちら(外部サイト)</ons-button>'
+              );
+              $('#link').click(function(){
+                window.open('https://www.kuramotokai.com/omosiro/zemi/id/1/', '_blank');
+              });
+            }
+
+            showTemplateDialog();
+          });
+          $('#hideDialog').click(function(){
+            hideDialog('my-dialog');
           });
         }
 
@@ -364,6 +410,26 @@ document.addEventListener('init', function (event) {
         localStorage.setItem('itemList', itemList);
 
       });
+
+      // ダイヤログ
+      var showTemplateDialog = function() {
+        var dialog = document.getElementById('my-dialog');    
+        if (dialog) {
+          dialog.show();
+        }
+      };    
+      var hideDialog = function(id) {
+        document
+          .getElementById(id)
+          .hide();
+      };
+      $('#dealog').click(function() {
+        showTemplateDialog();
+      });
+      $('#hideDialog').click(function(){
+        hideDialog('my-dialog');
+      });
+      
 
 
     });

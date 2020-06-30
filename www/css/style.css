@@ -118,6 +118,42 @@
     letter-spacing: 2px; 
   }
 
+  #hideDialog, #dealog {
+    background: none;
+    box-shadow: none;
+   
+  }
+
+  #dealog {
+    font-size: 20px;
+    color: #ffe373;
+    padding: 5px;
+  }
+
+  #hideDialog {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #00698C;
+  }
+
+  #changeTrivia {
+    text-align: center;
+    padding: 10px;
+  }
+
+  #my-dialog img {
+    max-width: 100%;
+  }
+
+  #my-dialog h1 {
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  #link {
+    background-color: #FF9673;
+  }
 /* 一覧ページ */
   .lists {
     margin-top: 10px;
