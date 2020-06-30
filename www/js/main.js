@@ -113,7 +113,7 @@ document.addEventListener('init', function (event) {
               $('#changeTrivia').html(     // html変更
                 '<h1>産地ごとの特色</h1>' +
                 '<img src="images/sake-map.png">' +
-                '<p>日本酒はその土地の米と水を原料としているため、<br>地域によって味に特徴が異なります。<br>大きく見て寒い地域は辛口、<br>暖かい地域は甘口の日本酒が多くなります。</p>' +
+                '<p>日本酒は、<br>その土地の米と水を<br>原料としているため、<br>地域により味の特徴があります。<br>寒い地域は辛口、<br>暖かい地域は甘口<br>の日本酒が多くなります。</p>' +
                 '<ons-button id="link">詳しくはこちら(外部サイト)</ons-button>'
               );
               $('#link').click(function(){
