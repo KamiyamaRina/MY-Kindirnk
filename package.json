@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "browser-sync": "^2.26.7",
-        "cordova": "^9.0.0"
+        "cordova": "^13.0.0"
     },
     "main": "index.js",
     "repository": {
